@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    vc:minVersion="1.1" xmlns:dcer="http://www.xml.proj/gradj/digitalni_sertifikat"
+    targetNamespace="http://www.xml.proj/gradj/digitalni_sertifikat">
+
+    <xs:element name="Digitalni_sertifikat">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Osnovni_podaci">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element default="1" name="Broj_certifikata"
+                                type="xs:positiveInteger"/>
+                            <xs:element name="Datum_i_vreme_izdavanja" type="xs:dateTime"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Podaci_o_gradjaninu">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Ime_i_prezime">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:maxLength value="50"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="Pol">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="Muski"/>
+                                        <xs:enumeration value="Zenski"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="Datum_rodjenja" type="xs:date"/>
+                            <xs:element name="JMBG">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:length value="13"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="Broj_pasosa"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="2" minOccurs="1" name="Vakcinacija" type="dcer:TVakcinacija"> </xs:element>
+                <xs:element maxOccurs="3" minOccurs="0" name="Test" type="dcer:TTest"> </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType abstract="false" name="TVakcinacija">
+        <xs:sequence>
+            <xs:element name="Doza">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="1/2"/>
+                        <xs:enumeration value="2/2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Tip">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Pfizer-BioNTech"/>
+                        <xs:enumeration value="Sputnik V"/>
+                        <xs:enumeration value="Sinopharm"/>
+                        <xs:enumeration value="AstraZeneca"/>
+                        <xs:enumeration value="Moderna"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Proizvodjac_i_serija">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\w+,\d+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Datum" type="xs:date"/>
+            <xs:element name="Zdravstvena_ustanova" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="doza">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Prva Doza"/>
+                    <xs:enumeration value="Druga Doza"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="TTest">
+        <xs:sequence>
+            <xs:element name="Vrsta_uzorka" nillable="true" type="xs:string"/>
+            <xs:element name="Proizvodjac" nillable="true" type="xs:string"/>
+            <xs:element name="Datum_i_vreme_uzorkovanja" nillable="true" type="xs:dateTime"/>
+            <xs:element name="Datum_i_vreme_izdavanja" nillable="true" type="xs:dateTime"/>
+            <xs:element name="Rezultat" nillable="true">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Pozitivan"/>
+                        <xs:enumeration value="Negativan"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Laboratorija" nillable="true" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="naziv">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="SARS-CoV 2 RT Real Time PCR"/>
+                    <xs:enumeration value="SARS-CoV 2 Ag-RDT(Antigen Rapid Detection Test)"/>
+                    <xs:enumeration value="SARS-CoV 2 RBD S-Protein Immunoglobulin G (IgG) Test"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+</xs:schema>

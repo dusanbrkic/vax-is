@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Obrazac xmlns="http://www.xml.proj/gradj/obrazac"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.xml.proj/gradj/obrazac obrazac.xsd">
+    <Podaci_o_pacijentu>
+        <Drzavljanstvo>
+            <Srpski_drzavljanin>
+                <JMBG>0101980660066</JMBG>
+            </Srpski_drzavljanin>
+        </Drzavljanstvo>
+        <Prezime>Prezimenić</Prezime>
+        <Ime>Imenko</Ime>
+        <Ime_roditelja>Roditeljko</Ime_roditelja>
+        <Pol>M</Pol>
+        <Datum_rodjenja>1980-01-01</Datum_rodjenja>
+        <Mesto_rodjenja>Novi Sad</Mesto_rodjenja>
+        <Lokacija>
+            <Adresa>
+                <Ulica>Ulica Ul</Ulica>
+                <Broj>23</Broj>
+            </Adresa>
+            <Mesto_naselje>Grbavica</Mesto_naselje>
+            <Opstina_grad>Novi Sad</Opstina_grad>
+        </Lokacija>
+        <Broj_fiksni>454433</Broj_fiksni>
+        <Broj_mobilni>0654442288</Broj_mobilni>
+        <Email>imenko.prezimenic@gmail.com</Email>
+        <Radni_status>zaposlen</Radni_status>
+        <Zanimanje>drugo</Zanimanje>
+        <Soc_zastita>
+            <Korisnik_soc_zast>Ne</Korisnik_soc_zast>
+            <Naziv_sedista/>
+            <Opstina_sedista/>
+        </Soc_zastita>
+        <Saglasnost>SAGLASAN SAM</Saglasnost>
+        <Imunoloski_lek>Vakcina</Imunoloski_lek>
+        <Datum>2021-12-01</Datum>
+    </Podaci_o_pacijentu>
+    <Evidencija_o_vakcinaciji>
+        <Zdravstvena_ustanova>Dom zdravlja Novi Sad</Zdravstvena_ustanova>
+        <Vakcinacijski_punkt>12</Vakcinacijski_punkt>
+        <Lekar>
+            <Ime>Lekarko</Ime>
+            <Prezime>Lekarić</Prezime>
+            <Faksmil>234123</Faksmil>
+            <Broj_telefona>0611113355</Broj_telefona>
+        </Lekar>
+        <Vakcinacije>
+            <Naziv_vakcine>Pfizer-BioNTech</Naziv_vakcine>
+            <Datum>2021-06-01</Datum>
+            <Nacin_davanja_vakcine>IM</Nacin_davanja_vakcine>
+            <Ekstremitet>LR</Ekstremitet>
+            <Serija_vakicne>23</Serija_vakicne>
+            <Proizvodjac>Pfizer-BioNTech</Proizvodjac>
+            <Nezeljene_reakcije>Ne</Nezeljene_reakcije>
+        </Vakcinacije>
+        <Kontradikcije>
+            <Dijagnoza>Nema kontradikcija</Dijagnoza>
+            <Datum>2021-06-01</Datum>
+            <Trajne_kontradikcije>NE</Trajne_kontradikcije>
+        </Kontradikcije>
+    </Evidencija_o_vakcinaciji>
+</Obrazac>

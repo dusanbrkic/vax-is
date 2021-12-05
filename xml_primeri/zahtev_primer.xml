@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Zahtev xmlns="http://www.xml.proj/gradj/zahtev"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.xml.proj/gradj/zahtev ../zahtev.xsd">
+    <Podnosilac_zahteva>
+        <Ime_i_prezime>Imenko Prezimenić</Ime_i_prezime>
+        <Datum_rodjenja>1980-01-01</Datum_rodjenja>
+        <Pol>Muski</Pol>
+        <JMBG>0101980660066</JMBG>
+        <Broj_pasosa>0101</Broj_pasosa>
+    </Podnosilac_zahteva>
+    <Razlog_za_podnosenje_zahteva>Neki tekst dsadasdsa</Razlog_za_podnosenje_zahteva>
+    <Mesto>Novi Sad</Mesto>
+    <Datum>2021-12-01</Datum>
+</Zahtev>
