@@ -187,7 +187,17 @@
                 </xs:simpleType>
             </xs:element>
             <xs:element name="Serija_vakicne" type="xs:string"/>
-            <xs:element name="Proizvodjac" type="xs:string"/>
+            <xs:element name="Proizvodjac">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Pfizer-BioNTech"/>
+                        <xs:enumeration value="Sputnik V"/>
+                        <xs:enumeration value="Sinopharm"/>
+                        <xs:enumeration value="AstraZeneca"/>
+                        <xs:enumeration value="Moderna"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
             <xs:element name="Nezeljene_reakcije" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>

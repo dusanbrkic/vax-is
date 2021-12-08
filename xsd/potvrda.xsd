@@ -19,7 +19,17 @@
                 </xs:element>
                 <xs:element maxOccurs="3" minOccurs="1" name="Vakcinacija" type="pot:TVakcinacija"/>
                 <xs:element name="Zdravstvena_ustanova_koja_vakcinise" type="xs:string "/>
-                <xs:element name="Naziv_vakcine" type="xs:string "/>
+                <xs:element name="Naziv_vakcine">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="Pfizer-BioNTech"/>
+                            <xs:enumeration value="Sputnik V"/>
+                            <xs:enumeration value="Sinopharm"/>
+                            <xs:enumeration value="AstraZeneca"/>
+                            <xs:enumeration value="Moderna"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
                 <xs:element name="Datum" type="xs:date"/>
                 <xs:element name="Zdravstvena_ustanova" type="xs:string "/>
                 <xs:element name="QR_code" type="xs:string"/>
