@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    vc:minVersion="1.1" xmlns:intr="http://www.xml.proj/gradj/interesovanje"
+    targetNamespace="http://www.xml.proj/gradj/interesovanje">
+
+    <xs:element name="Interesovanje">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Opcija_drzavljanin">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="Држављанин Републике Србије"/>
+                            <xs:enumeration value="Страни држављанин са боравком у РС"/>
+                            <xs:enumeration value="Страни држављанин без боравка у РС"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="JMBG">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:length value="13"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Ime" type="xs:string"/>
+                <xs:element name="Prezime" type="xs:string"/>
+                <xs:element name="Adresa_elektronske_poste">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string"> </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Broj_mobilnog_telefona">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:length value="10"/>
+                            <xs:pattern value="06\d{8}"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Broj_fiksnog_telefona" type="xs:string"/>
+                <xs:element name="Lokacija" type="xs:string"/>
+                <xs:element name="Proizvodjac_vakcine">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="Pfizer-BioNTech"/>
+                            <xs:enumeration value="Sputnik V"/>
+                            <xs:enumeration value="Sinopharm"/>
+                            <xs:enumeration value="AstraZeneca"/>
+                            <xs:enumeration value="Moderna"/>
+                            <xs:enumeration value="Bilo koja"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Davalac_krvi">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="Da"/>
+                            <xs:enumeration value="Ne"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Datum" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
