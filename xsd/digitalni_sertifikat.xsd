@@ -10,7 +10,7 @@
                 <xs:element name="Osnovni_podaci">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element default="1" name="Broj_certifikata"
+                            <xs:element default="1" name="Broj_sertifikata"
                                 type="xs:positiveInteger"/>
                             <xs:element name="Datum_i_vreme_izdavanja" type="xs:dateTime"/>
                         </xs:sequence>

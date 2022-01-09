@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.xml.proj/gradj/digitalni_sertifikat ../digitalni_sertifikat.xsd">
     <Osnovni_podaci>
-        <Broj_certifikata>1234</Broj_certifikata>
+        <Broj_sertifikata>1234</Broj_sertifikata>
         <Datum_i_vreme_izdavanja>2021-11-29T12:00:00</Datum_i_vreme_izdavanja>
     </Osnovni_podaci>
     <Podaci_o_gradjaninu>
