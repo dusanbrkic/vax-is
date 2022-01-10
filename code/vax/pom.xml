@@ -67,6 +67,32 @@
             <artifactId>jaxb2-basics-runtime</artifactId>
             <version>0.9.0</version>
         </dependency>
+        
+        <dependency>
+			<groupId>net.sf.xmldb-org</groupId>
+			<artifactId>xmldb-api</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.ws.commons</groupId>
+			<artifactId>ws-commons-util</artifactId>
+			<version>1.0.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.evolvedbinary.j8fu</groupId>
+			<artifactId>j8fu</artifactId>
+			<version>1.4</version>
+		</dependency>
+		
+		
 	</dependencies>
 
 	<build>

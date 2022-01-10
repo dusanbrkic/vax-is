@@ -1,27 +1,18 @@
 package com.vax.rest.ws;
 
-import java.io.File;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javax.ws.rs.Path;
-import javax.xml.XMLConstants;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
 
 import org.springframework.stereotype.Service;
-import org.xml.sax.SAXException;
 
 import com.vax.rest.inter.DSService;
-import com.vax.rest.util.SchemaValidationEventHandler;
+import com.vax.rest.util.XMLDatabase;
+import com.vax.rest.util.XMLParser;
 
 import proj.xml.gradj.digitalni_sertifikat.DigitalniSertifikat;
 import proj.xml.gradj.digitalni_sertifikat.DigitalniSertifikat.OsnovniPodaci;
@@ -34,51 +25,41 @@ public class DSServiceImpl implements DSService {
 	public DigitalniSertifikat testUnmarshal() {
 		System.out.println("Testing unmarshal");
 		
-		try {
-			JAXBContext context = JAXBContext.newInstance("proj.xml.gradj.digitalni_sertifikat");
-			
-			Unmarshaller unmarshaller = context.createUnmarshaller();
-			SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-			Schema schema = schemaFactory.newSchema(new File("./src/main/resources/xsd/digitalni_sertifikat.xsd"));
-			unmarshaller.setSchema(schema);
-            unmarshaller.setEventHandler(new SchemaValidationEventHandler());
-			
-			DigitalniSertifikat ds = (DigitalniSertifikat) unmarshaller.unmarshal(new File("./src/main/resources/xml/digitalni_sertifikat_primer.xml"));
-			
-			System.out.println(ds);
-			
-			return ds;
-		} catch (JAXBException | SAXException e) {
-			e.printStackTrace();
-		}
-		return null;
+		DigitalniSertifikat ds = (DigitalniSertifikat) XMLParser.unmarshal("proj.xml.gradj.digitalni_sertifikat", "digitalni_sertifikat.xsd", "digitalni_sertifikat_primer.xml",true,false,null);	
+		System.out.println(ds);	
+		return ds;
 	}
 
 	@Override
 	public DigitalniSertifikat testMarshal() {
+		DigitalniSertifikat ds=new DigitalniSertifikat();
+		OsnovniPodaci os=new OsnovniPodaci();
+		os.setBrojSertifikata(BigInteger.valueOf(100));
+		Date d=new Date();
+		GregorianCalendar c = new GregorianCalendar();
+		c.setTime(d);
 		try {
-			JAXBContext context = JAXBContext.newInstance("proj.xml.gradj.digitalni_sertifikat");
-			Marshaller marshaller = context.createMarshaller();
-			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-			Schema schema = schemaFactory.newSchema(new File("./src/main/resources/xsd/digitalni_sertifikat.xsd"));
-			marshaller.setSchema(schema);
-            marshaller.setEventHandler(new SchemaValidationEventHandler());
-			
-			DigitalniSertifikat ds=new DigitalniSertifikat();
-			OsnovniPodaci os=new OsnovniPodaci();
-			os.setBrojSertifikata(BigInteger.valueOf(100));
-			Date d=new Date();
-			GregorianCalendar c = new GregorianCalendar();
-			c.setTime(d);
 			os.setDatumIVremeIzdavanja(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
-			ds.setOsnovniPodaci(os);
-			
-			marshaller.marshal(ds, System.out);
-		} catch (JAXBException | DatatypeConfigurationException | SAXException e) {
+		} catch (DatatypeConfigurationException e) {
 			e.printStackTrace();
 		}
+		ds.setOsnovniPodaci(os);
+		XMLParser.marshal("proj.xml.gradj.digitalni_sertifikat", "digitalni_sertifikat.xsd",ds,System.out,false);
 		return null;
+	}
+
+	@Override
+	public DigitalniSertifikat testStore() {
+		DigitalniSertifikat ds = (DigitalniSertifikat) XMLParser.unmarshal("proj.xml.gradj.digitalni_sertifikat", "digitalni_sertifikat.xsd", "digitalni_sertifikat_primer.xml",true,false,null);
+		XMLDatabase.storeXML("/db/sample/library", "1.xml", "proj.xml.gradj.digitalni_sertifikat", ds);
+		
+		return null;
+	}
+
+	@Override
+	public DigitalniSertifikat testRetrive() {
+		DigitalniSertifikat ds=(DigitalniSertifikat) XMLDatabase.retriveXML("/db/sample/library", "1.xml", "proj.xml.gradj.digitalni_sertifikat");
+		return ds;
 	}
 
 }

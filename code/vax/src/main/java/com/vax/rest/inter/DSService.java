@@ -17,5 +17,15 @@ public interface DSService {
 	@Path("/testMarshal")
 	@Produces("application/xml")
 	public DigitalniSertifikat testMarshal();
+	
+	@GET
+	@Path("/testStore")
+	@Produces("application/xml")
+	public DigitalniSertifikat testStore();
+	
+	@GET
+	@Path("/testRetrive")
+	@Produces("application/xml")
+	public DigitalniSertifikat testRetrive();
 
 }
