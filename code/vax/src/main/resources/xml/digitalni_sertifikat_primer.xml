@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Digitalni_sertifikat xmlns="http://www.xml.proj/gradj/digitalni_sertifikat"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.xml.proj/gradj/digitalni_sertifikat ../digitalni_sertifikat.xsd">
+    xsi:schemaLocation="http://www.xml.proj/gradj/digitalni_sertifikat ../xsd/digitalni_sertifikat.xsd">
     <Osnovni_podaci>
         <Broj_sertifikata>1234</Broj_sertifikata>
         <Datum_i_vreme_izdavanja>2021-11-29T12:00:00</Datum_i_vreme_izdavanja>
@@ -19,4 +19,8 @@
         <Datum>2021-06-29</Datum>
         <Zdravstvena_ustanova>Dom Zdravlja Novi Sad</Zdravstvena_ustanova>
     </Vakcinacija>
+    <Sluzbenik>
+        <Ime_i_prezime>Imenko Prezimenić</Ime_i_prezime>
+        <Identifikacioni_broj>0101980660</Identifikacioni_broj>
+    </Sluzbenik>
 </Digitalni_sertifikat>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:dcer="http://www.xml.proj/gradj/digitalni_sertifikat"
-		xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    elementFormDefault="qualified"
-    targetNamespace="http://www.xml.proj/gradj/digitalni_sertifikat" >
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.xml.proj/gradj/digitalni_sertifikat">
 
     <xs:element name="Digitalni_sertifikat">
         <xs:complexType>
@@ -47,6 +46,7 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element maxOccurs="2" minOccurs="1" name="Vakcinacija" type="dcer:TVakcinacija"> </xs:element>
+                <xs:element ref="dcer:Sluzbenik"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -78,9 +78,23 @@
                 <xs:restriction base="xs:string">
                     <xs:enumeration value="Prva Doza"/>
                     <xs:enumeration value="Druga Doza"/>
-					<xs:enumeration value="Treća Doza"/>
+                    <xs:enumeration value="Treća Doza"/>
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
     </xs:complexType>
+    <xs:element name="Sluzbenik">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="Ime_i_prezime" type="xs:string"/>
+                <xs:element name="Identifikacioni_broj">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:length value="10"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
