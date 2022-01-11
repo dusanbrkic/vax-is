@@ -84,7 +84,7 @@ public class InteresovanjeServiceImpl implements InteresovanjeService {
 	}
 
 	@Override
-	public Interesovanje testRetrive() {
+	public Interesovanje testRetrieve() {
 		Interesovanje interesovanje=(Interesovanje) XMLDatabase.retriveXML("/db/sample/library", "2.xml", "proj.xml.gradj.interesovanje");
 		return interesovanje;
 	}
