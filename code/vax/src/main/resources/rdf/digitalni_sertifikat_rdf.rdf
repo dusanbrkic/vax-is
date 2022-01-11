@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xml:lang="en"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:pred="http://www.xml.proj/gradj/rdf/predicate/">
+    
+    <rdf:Description rdf:about="http://www.xml.proj/gradj/digitalni_sertifikat/1234">
+        <pred:izdaje>0101980660</pred:izdaje>
+        <pred:pripada>0101980660066</pred:pripada>
+        <pred:kreiran>2021-11-29T12:00:00</pred:kreiran>
+    </rdf:Description>
+    
+    
+</rdf:RDF>
