@@ -8,27 +8,26 @@ import javax.ws.rs.Produces;
 
 import org.xml.sax.SAXException;
 
-import proj.xml.gradj.interesovanje.Interesovanje;
+import proj.xml.gradj.obrazac.Obrazac;
 
-public interface InteresovanjeService {
+public interface ObrazacService {
 	@GET
 	@Path("/testUnmarshal")
 	@Produces("application/xml")
-	public Interesovanje testUnmarshal() throws SAXException, IOException;
+	public Obrazac testUnmarshal() throws SAXException, IOException;
 	
 	@GET
 	@Path("/testMarshal")
 	@Produces("application/xml")
-	public Interesovanje testMarshal();
+	public Obrazac testMarshal();
 	
 	@GET
 	@Path("/testStore")
 	@Produces("application/xml")
-	public Interesovanje testStore();
+	public Obrazac testStore();
 	
 	@GET
 	@Path("/testRetrieve")
 	@Produces("application/xml")
-	public Interesovanje testRetrieve();
-
+	public Obrazac testRetrieve();
 }
