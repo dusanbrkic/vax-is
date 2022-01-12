@@ -19,7 +19,7 @@ import java.util.GregorianCalendar;
 public class ZahtevServiceImpl implements ZahtevService {
 
 	@Override
-	public Zahtev testUnmarshal() throws SAXException, IOException {
+	public Zahtev testUnmarshal() {
 		System.out.println("Testing unmarshal");
 
 		Zahtev zahtev = (Zahtev) XMLParser.unmarshal("proj.xml.gradj.zahtev", "zahtev.xsd", "zahtev_primer.xml",true,false,null);
@@ -75,5 +75,11 @@ public class ZahtevServiceImpl implements ZahtevService {
 	@Override
 	public Zahtev testRetrive() {
 		return (Zahtev) XMLDatabase.retriveXML("/db/sample/library", "6.xml", "proj.xml.gradj.zahtev");
+	}
+
+	@Override
+	public void testRDF() throws SAXException, IOException {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -14,7 +14,7 @@ public interface PotvrdaService {
 	@GET
 	@Path("/testUnmarshal")
 	@Produces("application/xml")
-	public Potvrda testUnmarshal() throws SAXException, IOException;
+	public Potvrda testUnmarshal();
 
 	@GET
 	@Path("/testMarshal")
@@ -30,4 +30,8 @@ public interface PotvrdaService {
 	@Path("/testRetrive")
 	@Produces("application/xml")
 	public Potvrda testRetrive();
+	
+	@GET
+	@Path("/testRDF")
+	public void testRDF() throws SAXException, IOException;
 }

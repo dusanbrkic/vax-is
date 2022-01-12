@@ -27,6 +27,7 @@ import org.xml.sax.SAXException;
 
 import com.vax.rest.inter.DSService;
 import com.vax.rest.util.MetadataExtractor;
+import com.vax.rest.util.RDFUtil;
 import com.vax.rest.util.SparqlUtil;
 import com.vax.rest.util.XMLDatabase;
 import com.vax.rest.util.XMLParser;
@@ -39,31 +40,11 @@ import proj.xml.gradj.digitalni_sertifikat.DigitalniSertifikat.OsnovniPodaci;
 public class DSServiceImpl implements DSService {
 
 	@Override
-	public DigitalniSertifikat testUnmarshal() throws SAXException, IOException {
+	public DigitalniSertifikat testUnmarshal() {
 		System.out.println("Testing unmarshal");
 		
 		DigitalniSertifikat ds = (DigitalniSertifikat) XMLParser.unmarshal("proj.xml.gradj.digitalni_sertifikat", "digitalni_sertifikat.xsd", "digitalni_sertifikat_primer.xml",true,false,null);	
 		System.out.println(ds);	
-		
-		
-		
-		String xmlFilePath = "./src/main/resources/xml/digitalni_sertifikat_primer.xml";
-		
-		String rdfFilePath = "./src/main/resources/rdf/rezultat_test.rdf";
-		MetadataExtractor metadataExtractor = new MetadataExtractor();
-		
-		System.out.println("[INFO] Extracting metadata from RDFa attributes...");
-		try {
-			metadataExtractor.extractMetadata(
-					new FileInputStream(new File(xmlFilePath)), 
-					new FileOutputStream(new File(rdfFilePath)));
-		} catch (TransformerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-				
-		
-		//upis u bazu
 		
 		
 		return ds;
@@ -99,6 +80,21 @@ public class DSServiceImpl implements DSService {
 	public DigitalniSertifikat testRetrive() {
 		DigitalniSertifikat ds=(DigitalniSertifikat) XMLDatabase.retriveXML("/db/sample/library", "1.xml", "proj.xml.gradj.digitalni_sertifikat");
 		return ds;
+	}
+
+	@Override
+	public void testRDF() throws SAXException, IOException {
+
+		
+		String xmlFilePath = "./src/main/resources/xml/digitalni_sertifikat_primer.xml";
+		
+		String rdfFilePath = "./src/main/resources/rdf/digitalni_sert.rdf";
+		
+		//kreira RDF fajl
+		RDFUtil.generateRDFFromXML(xmlFilePath, rdfFilePath);
+		
+		//upis u bazu
+		
 	}
 
 }

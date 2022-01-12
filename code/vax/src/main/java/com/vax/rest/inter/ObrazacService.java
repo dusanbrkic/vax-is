@@ -14,7 +14,7 @@ public interface ObrazacService {
 	@GET
 	@Path("/testUnmarshal")
 	@Produces("application/xml")
-	public Obrazac testUnmarshal() throws SAXException, IOException;
+	public Obrazac testUnmarshal();
 	
 	@GET
 	@Path("/testMarshal")
@@ -30,4 +30,8 @@ public interface ObrazacService {
 	@Path("/testRetrieve")
 	@Produces("application/xml")
 	public Obrazac testRetrieve();
+	
+	@GET
+	@Path("/testRDF")
+	public void testRDF() throws SAXException, IOException;
 }

@@ -14,7 +14,7 @@ public interface InteresovanjeService {
 	@GET
 	@Path("/testUnmarshal")
 	@Produces("application/xml")
-	public Interesovanje testUnmarshal() throws SAXException, IOException;
+	public Interesovanje testUnmarshal();
 	
 	@GET
 	@Path("/testMarshal")
@@ -30,5 +30,9 @@ public interface InteresovanjeService {
 	@Path("/testRetrieve")
 	@Produces("application/xml")
 	public Interesovanje testRetrieve();
+	
+	@GET
+	@Path("/testRDF")
+	public void testRDF() throws SAXException, IOException;
 
 }

@@ -15,7 +15,7 @@ public interface DSService {
 	@GET
 	@Path("/testUnmarshal")
 	@Produces("application/xml")
-	public DigitalniSertifikat testUnmarshal() throws SAXException, IOException;
+	public DigitalniSertifikat testUnmarshal();
 	
 	@GET
 	@Path("/testMarshal")
@@ -31,5 +31,10 @@ public interface DSService {
 	@Path("/testRetrive")
 	@Produces("application/xml")
 	public DigitalniSertifikat testRetrive();
+	
+	@GET
+	@Path("/testRDF")
+	public void testRDF() throws SAXException, IOException;
+	
 
 }

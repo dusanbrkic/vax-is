@@ -66,6 +66,15 @@ public class MetadataExtractor {
 		// Trigger the transformation
 		grddlTransformer.transform(source, result);
 		
+		try {
+			in.close();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	

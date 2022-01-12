@@ -19,32 +19,13 @@ import java.util.GregorianCalendar;
 public class PotvrdaServiceImpl implements PotvrdaService {
 
 	@Override
-	public Potvrda testUnmarshal() throws SAXException, IOException {
+	public Potvrda testUnmarshal() {
 		System.out.println("Testing unmarshal");
 
 		Potvrda potvrda = (Potvrda) XMLParser.unmarshal("proj.xml.gradj.potvrda", "potvrda.xsd", "potvrda_primer.xml",true,false,null);
 		System.out.println(potvrda);
 
-		/*
 
-		String xmlFilePath = "./src/main/resources/xml/potvrda_primer.xml";
-
-		String rdfFilePath = "./src/main/resources/rdf/rezultat_test.rdf";
-		MetadataExtractor metadataExtractor = new MetadataExtractor();
-
-		System.out.println("[INFO] Extracting metadata from RDFa attributes...");
-		try {
-			metadataExtractor.extractMetadata(
-					new FileInputStream(new File(xmlFilePath)),
-					new FileOutputStream(new File(rdfFilePath)));
-		} catch (TransformerException e) {
-
-			e.printStackTrace();
-		}
-		*/
-
-
-		//upis u bazu
 		return potvrda;
 	}
 
@@ -75,5 +56,11 @@ public class PotvrdaServiceImpl implements PotvrdaService {
 	@Override
 	public Potvrda testRetrive() {
 		return (Potvrda) XMLDatabase.retriveXML("/db/sample/library", "5.xml", "proj.xml.gradj.potvrda");
+	}
+
+	@Override
+	public void testRDF() throws SAXException, IOException {
+		// TODO Auto-generated method stub
+		
 	}
 }

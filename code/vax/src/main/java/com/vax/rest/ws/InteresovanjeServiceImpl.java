@@ -30,32 +30,12 @@ import proj.xml.gradj.interesovanje.Interesovanje;
 public class InteresovanjeServiceImpl implements InteresovanjeService {
 
 	@Override
-	public Interesovanje testUnmarshal() throws SAXException, IOException {
+	public Interesovanje testUnmarshal() {
 		System.out.println("Testing unmarshal");
 		
 		Interesovanje interesovanje = (Interesovanje) XMLParser.unmarshal("proj.xml.gradj.interesovanje", "interesovanje.xsd", "interesovanje_primer.xml",true,false,null);	
 		System.out.println(interesovanje);	
 		
-		/*
-		
-		String xmlFilePath = "./src/main/resources/xml/interesovanje_primer.xml";
-		
-		String rdfFilePath = "./src/main/resources/rdf/rezultat_test.rdf";
-		MetadataExtractor metadataExtractor = new MetadataExtractor();
-		
-		System.out.println("[INFO] Extracting metadata from RDFa attributes...");
-		try {
-			metadataExtractor.extractMetadata(
-					new FileInputStream(new File(xmlFilePath)), 
-					new FileOutputStream(new File(rdfFilePath)));
-		} catch (TransformerException e) {
-			
-			e.printStackTrace();
-		}
-		*/
-				
-		
-		//upis u bazu
 		return interesovanje;
 	}
 
@@ -87,6 +67,12 @@ public class InteresovanjeServiceImpl implements InteresovanjeService {
 	public Interesovanje testRetrieve() {
 		Interesovanje interesovanje=(Interesovanje) XMLDatabase.retriveXML("/db/sample/library", "2.xml", "proj.xml.gradj.interesovanje");
 		return interesovanje;
+	}
+
+	@Override
+	public void testRDF() throws SAXException, IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

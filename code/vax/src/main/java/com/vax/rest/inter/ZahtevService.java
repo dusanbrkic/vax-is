@@ -14,7 +14,7 @@ public interface ZahtevService {
 	@GET
 	@Path("/testUnmarshal")
 	@Produces("application/xml")
-	public Zahtev testUnmarshal() throws SAXException, IOException;
+	public Zahtev testUnmarshal();
 
 	@GET
 	@Path("/testMarshal")
@@ -30,4 +30,8 @@ public interface ZahtevService {
 	@Path("/testRetrive")
 	@Produces("application/xml")
 	public Zahtev testRetrive();
+	
+	@GET
+	@Path("/testRDF")
+	public void testRDF() throws SAXException, IOException;
 }

@@ -24,33 +24,14 @@ import proj.xml.gradj.obrazac.Obrazac.PodaciOPacijentu;
 public class ObrazacServiceImpl implements ObrazacService {
 
 	@Override
-	public Obrazac testUnmarshal() throws SAXException, IOException {
+	public Obrazac testUnmarshal() {
 		
 		System.out.println("Testing unmarshal");
 		
 		Obrazac obrazac = (Obrazac) XMLParser.unmarshal("proj.xml.gradj.obrazac", "obrazac.xsd", "obrazac_primer.xml",true,false,null);	
 		System.out.println(obrazac);	
 		
-		/*
 		
-		String xmlFilePath = "./src/main/resources/xml/obrazac_primer.xml";
-		
-		String rdfFilePath = "./src/main/resources/rdf/rezultat_test.rdf";
-		MetadataExtractor metadataExtractor = new MetadataExtractor();
-		
-		System.out.println("[INFO] Extracting metadata from RDFa attributes...");
-		try {
-			metadataExtractor.extractMetadata(
-					new FileInputStream(new File(xmlFilePath)), 
-					new FileOutputStream(new File(rdfFilePath)));
-		} catch (TransformerException e) {
-			
-			e.printStackTrace();
-		}
-		*/
-				
-		
-		//upis u bazu
 		return obrazac;
 	}
 
@@ -81,6 +62,12 @@ public class ObrazacServiceImpl implements ObrazacService {
 	public Obrazac testRetrieve() {
 		Obrazac obrazac = (Obrazac) XMLDatabase.retriveXML("/db/sample/library", "4.xml", "proj.xml.gradj.obrazac");
 		return obrazac;
+	}
+
+	@Override
+	public void testRDF() throws SAXException, IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

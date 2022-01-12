@@ -22,30 +22,13 @@ import proj.xml.sluzb.izvestaj.Izvestaj;
 public class IzvestajServiceImpl implements IzvestajService {
 
 	@Override
-	public Izvestaj testUnmarshal() throws SAXException, IOException {
+	public Izvestaj testUnmarshal(){
 		
 		System.out.println("Testing unmarshal");
 		
 		Izvestaj izvestaj = (Izvestaj) XMLParser.unmarshal("proj.xml.sluzb.izvestaj", "izvestaj.xsd", "izvestaj_primer.xml",true,false,null);	
 		System.out.println(izvestaj);	
 		
-		/*
-		
-		String xmlFilePath = "./src/main/resources/xml/izvestaj_primer.xml";
-		
-		String rdfFilePath = "./src/main/resources/rdf/rezultat_test.rdf";
-		MetadataExtractor metadataExtractor = new MetadataExtractor();
-		
-		System.out.println("[INFO] Extracting metadata from RDFa attributes...");
-		try {
-			metadataExtractor.extractMetadata(
-					new FileInputStream(new File(xmlFilePath)), 
-					new FileOutputStream(new File(rdfFilePath)));
-		} catch (TransformerException e) {
-			
-			e.printStackTrace();
-		}
-		*/
 				
 		
 		//upis u bazu
@@ -79,6 +62,12 @@ public class IzvestajServiceImpl implements IzvestajService {
 	public Izvestaj testRetrieve() {
 		Izvestaj izvestaj = (Izvestaj) XMLDatabase.retriveXML("/db/sample/library", "3.xml", "proj.xml.sluzb.izvestaj");
 		return izvestaj;
+	}
+
+	@Override
+	public void testRDF() throws SAXException, IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
