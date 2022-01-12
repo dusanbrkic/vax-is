@@ -94,6 +94,7 @@ public class DSServiceImpl implements DSService {
 		RDFUtil.generateRDFFromXML(xmlFilePath, rdfFilePath);
 		
 		//upis u bazu
+		RDFUtil.updateFuseki(rdfFilePath, "ds");
 		
 	}
 
