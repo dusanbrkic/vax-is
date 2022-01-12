@@ -1,6 +1,7 @@
 package com.vax.rest.ws;
 
 import com.vax.rest.inter.PotvrdaService;
+import com.vax.rest.util.RDFUtil;
 import com.vax.rest.util.XMLDatabase;
 import com.vax.rest.util.XMLParser;
 import org.springframework.stereotype.Service;
@@ -60,7 +61,14 @@ public class PotvrdaServiceImpl implements PotvrdaService {
 
 	@Override
 	public void testRDF() throws SAXException, IOException {
-		// TODO Auto-generated method stub
-		
+		String xmlFilePath = "./src/main/resources/xml/potvrda_primer.xml";
+
+		String rdfFilePath = "./src/main/resources/rdf/potvrda.rdf";
+
+		//kreira RDF fajl
+		RDFUtil.generateRDFFromXML(xmlFilePath, rdfFilePath);
+
+		//upis u bazu
+		RDFUtil.updateFuseki(rdfFilePath, "potvrda");
 	}
 }

@@ -3,7 +3,6 @@
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
     targetNamespace="http://www.xml.proj/gradj/potvrda" elementFormDefault="qualified"
     vc:minVersion="1.1">
-
     <xs:element name="Potvrda">
         <xs:complexType>
             <xs:sequence>
@@ -11,11 +10,13 @@
                 <xs:element name="Prezime" type="xs:string"/>
                 <xs:element name="Datum_rodjenja" type="xs:date"/>
                 <xs:element name="JMBG">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:length value="13"/>
-                        </xs:restriction>
-                    </xs:simpleType>
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="property"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
                 </xs:element>
                 <xs:element maxOccurs="3" minOccurs="1" name="Vakcinacija" type="pot:TVakcinacija"/>
                 <xs:element name="Zdravstvena_ustanova_koja_vakcinise" type="xs:string"/>
@@ -30,10 +31,27 @@
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:element>
-                <xs:element name="Datum" type="xs:date"/>
-                <xs:element name="Zdravstvena_ustanova" type="xs:string"/>
-                <xs:element name="QR_code" type="xs:string"/>
+                <xs:element name="Datum">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Zdravstvena_ustanova">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="property"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="QR_code"/>
             </xs:sequence>
+            <xs:attribute name="about"/>
         </xs:complexType>
     </xs:element>
     <xs:complexType name="TVakcinacija">

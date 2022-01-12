@@ -12,8 +12,7 @@
                         <xs:sequence>
                             <xs:element default="1" name="Broj_sertifikata"
                                 type="xs:positiveInteger"/>
-                            <xs:element name="Datum_i_vreme_izdavanja" type="xs:dateTime"/>
-                            <xs:element name="Meta">
+                            <xs:element name="Datum_i_vreme_izdavanja">
                                 <xs:complexType>
                                     <xs:simpleContent>
                                         <xs:extension base="xs:dateTime">

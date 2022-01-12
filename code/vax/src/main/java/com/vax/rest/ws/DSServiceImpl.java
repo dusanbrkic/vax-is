@@ -34,6 +34,7 @@ import com.vax.rest.util.XMLParser;
 
 import proj.xml.gradj.digitalni_sertifikat.DigitalniSertifikat;
 import proj.xml.gradj.digitalni_sertifikat.DigitalniSertifikat.OsnovniPodaci;
+import proj.xml.gradj.interesovanje.Interesovanje;
 
 @Service
 @Path("/ds")
@@ -58,8 +59,10 @@ public class DSServiceImpl implements DSService {
 		Date d=new Date();
 		GregorianCalendar c = new GregorianCalendar();
 		c.setTime(d);
+		DigitalniSertifikat.OsnovniPodaci.DatumIVremeIzdavanja dsd = new DigitalniSertifikat.OsnovniPodaci.DatumIVremeIzdavanja();
 		try {
-			os.setDatumIVremeIzdavanja(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+			dsd.setValue(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+			os.setDatumIVremeIzdavanja(dsd);
 		} catch (DatatypeConfigurationException e) {
 			e.printStackTrace();
 		}
@@ -88,7 +91,7 @@ public class DSServiceImpl implements DSService {
 		
 		String xmlFilePath = "./src/main/resources/xml/digitalni_sertifikat_primer.xml";
 		
-		String rdfFilePath = "./src/main/resources/rdf/digitalni_sert.rdf";
+		String rdfFilePath = "./src/main/resources/rdf/digitalni_sertifikat.rdf";
 		
 		//kreira RDF fajl
 		RDFUtil.generateRDFFromXML(xmlFilePath, rdfFilePath);

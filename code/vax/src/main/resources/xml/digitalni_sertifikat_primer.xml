@@ -6,8 +6,7 @@
     about = "http://www.xml.proj/gradj/digitalni_sertifikat/1234">
     <Osnovni_podaci>
         <Broj_sertifikata>1234</Broj_sertifikata>
-        <Datum_i_vreme_izdavanja>2021-11-29T12:00:00</Datum_i_vreme_izdavanja>
-        <Meta property="pred:kreiran">2021-11-29T12:00:00</Meta>
+        <Datum_i_vreme_izdavanja property="pred:kreiran">2021-11-29T12:00:00</Datum_i_vreme_izdavanja>
     </Osnovni_podaci>
     <Podaci_o_gradjaninu>
         <Ime_i_prezime>Imenko Prezimenić</Ime_i_prezime>
