@@ -18,6 +18,7 @@ import org.xml.sax.SAXException;
 
 import com.vax.rest.inter.InteresovanjeService;
 import com.vax.rest.util.MetadataExtractor;
+import com.vax.rest.util.RDFUtil;
 import com.vax.rest.util.XMLDatabase;
 import com.vax.rest.util.XMLParser;
 
@@ -43,11 +44,14 @@ public class InteresovanjeServiceImpl implements InteresovanjeService {
 	public Interesovanje testMarshal() {
 
 		Interesovanje interesovanje= new Interesovanje();
+		
 		Date d=new Date();
 		GregorianCalendar c = new GregorianCalendar();
 		c.setTime(d);
+		Interesovanje.Datum intD = new Interesovanje.Datum();
 		try {
-			interesovanje.setDatum(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+			intD.setValue(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+			interesovanje.setDatum(intD);
 		} catch (DatatypeConfigurationException e) {
 			e.printStackTrace();
 		}
@@ -71,8 +75,15 @@ public class InteresovanjeServiceImpl implements InteresovanjeService {
 
 	@Override
 	public void testRDF() throws SAXException, IOException {
-		// TODO Auto-generated method stub
+		String xmlFilePath = "./src/main/resources/xml/interesovanje_primer.xml";
 		
+		String rdfFilePath = "./src/main/resources/rdf/interesovanje.rdf";
+		
+		//kreira RDF fajl
+		RDFUtil.generateRDFFromXML(xmlFilePath, rdfFilePath);
+		
+		//upis u bazu
+		RDFUtil.updateFuseki(rdfFilePath, "interesovanje");
 	}
 
 	

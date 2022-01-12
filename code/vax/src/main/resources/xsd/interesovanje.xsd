@@ -7,6 +7,7 @@
     <xs:element name="Interesovanje">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="ID" type="xs:positiveInteger"/>
                 <xs:element name="Opcija_drzavljanin">
                     <xs:simpleType>
                         <xs:restriction base="xs:string">
@@ -17,11 +18,13 @@
                     </xs:simpleType>
                 </xs:element>
                 <xs:element name="JMBG">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:length value="13"/>
-                        </xs:restriction>
-                    </xs:simpleType>
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="property"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
                 </xs:element>
                 <xs:element name="Ime" type="xs:string"/>
                 <xs:element name="Prezime" type="xs:string"/>
@@ -39,7 +42,15 @@
                     </xs:simpleType>
                 </xs:element>
                 <xs:element name="Broj_fiksnog_telefona" type="xs:string"/>
-                <xs:element name="Lokacija" type="xs:string"/>
+                <xs:element name="Lokacija">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="property"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="Proizvodjac_vakcine">
                     <xs:simpleType>
                         <xs:restriction base="xs:string">
@@ -60,8 +71,17 @@
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:element>
-                <xs:element name="Datum" type="xs:date"/>
+                <xs:element name="Datum">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
+            <xs:attribute name="about"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>
