@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Obrazac xmlns="http://www.xml.proj/gradj/obrazac"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.xml.proj/gradj/obrazac obrazac.xsd">
+    xsi:schemaLocation="http://www.xml.proj/gradj/obrazac ../xsd/obrazac.xsd"
+    xmlns:pred="http://www.xml.proj/gradj/rdf/predicate/"
+    about = "http://www.xml.proj/gradj/obrazac/4345">
+    <ID>4345</ID>
     <Podaci_o_pacijentu>
         <Drzavljanstvo>
             <Srpski_drzavljanin>
-                <JMBG>0101980660066</JMBG>
+                <JMBG property="pred:sadrzi">0101980660066</JMBG>
             </Srpski_drzavljanin>
         </Drzavljanstvo>
         <Prezime>Prezimenić</Prezime>
@@ -37,7 +40,7 @@
         <Datum>2021-12-01</Datum>
     </Podaci_o_pacijentu>
     <Evidencija_o_vakcinaciji>
-        <Zdravstvena_ustanova>Dom zdravlja Novi Sad</Zdravstvena_ustanova>
+        <Zdravstvena_ustanova property="seNalazi">Dom zdravlja Novi Sad</Zdravstvena_ustanova>
         <Vakcinacijski_punkt>12</Vakcinacijski_punkt>
         <Lekar>
             <Ime>Lekarko</Ime>

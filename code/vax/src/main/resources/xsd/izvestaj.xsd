@@ -8,6 +8,7 @@
     <xs:element name="Izvestaj">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="ID" type="xs:positiveInteger"/>
                 <xs:element name="Datum_od" type="xs:date"/>
                 <xs:element name="Datum_do" type="xs:date"/>
                 <xs:element name="Broj_interesovanja">
@@ -24,11 +25,20 @@
                         <xs:simpleContent>
                             <xs:extension base="xs:positiveInteger">
                                 <xs:attribute name="Tekstualni_naziv" type="xs:string"/>
+                                <xs:attribute name="property"/>
                             </xs:extension>
                         </xs:simpleContent>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="Broj_izdatih" type="xs:positiveInteger"/>
+                <xs:element name="Broj_izdatih">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:positiveInteger">
+                                <xs:attribute name="property"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="Broj_vakcina">
                     <xs:complexType>
                         <xs:simpleContent>
@@ -43,6 +53,7 @@
                         <xs:simpleContent>
                             <xs:extension base="xs:positiveInteger">
                                 <xs:attribute name="Tekstualni_naziv" type="xs:string"/>
+                                <xs:attribute name="property"/>
                             </xs:extension>
                         </xs:simpleContent>
                     </xs:complexType>
@@ -91,6 +102,7 @@
                 </xs:element>
                 <xs:element name="Datum_izdavanja" type="xs:date"/>
             </xs:sequence>
+            <xs:attribute name="about"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
 import com.vax.rest.inter.ObrazacService;
+import com.vax.rest.util.RDFUtil;
 import com.vax.rest.util.XMLDatabase;
 import com.vax.rest.util.XMLParser;
 
@@ -66,8 +67,15 @@ public class ObrazacServiceImpl implements ObrazacService {
 
 	@Override
 	public void testRDF() throws SAXException, IOException {
-		// TODO Auto-generated method stub
+		String xmlFilePath = "./src/main/resources/xml/obrazac_primer.xml";
 		
+		String rdfFilePath = "./src/main/resources/rdf/obrazac.rdf";
+		
+		//kreira RDF fajl
+		RDFUtil.generateRDFFromXML(xmlFilePath, rdfFilePath);
+		
+		//upis u bazu
+		RDFUtil.updateFuseki(rdfFilePath, "obrazac");
 	}
 
 }

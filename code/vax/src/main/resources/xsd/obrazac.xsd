@@ -7,6 +7,7 @@
     <xs:element name="Obrazac">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="ID" type="xs:positiveInteger"/>
                 <xs:element name="Podaci_o_pacijentu">
                     <xs:complexType>
                         <xs:sequence>
@@ -76,7 +77,15 @@
                 <xs:element name="Evidencija_o_vakcinaciji">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="Zdravstvena_ustanova" type="xs:string"/>
+                            <xs:element name="Zdravstvena_ustanova">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute name="property"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
                             <xs:element name="Vakcinacijski_punkt" type="xs:string"/>
                             <xs:element ref="obr:Lekar"/>
                             <xs:element maxOccurs="3" minOccurs="1" name="Vakcinacije"
@@ -86,6 +95,7 @@
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
+            <xs:attribute name="about"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Drzavljanstvo">
@@ -96,11 +106,13 @@
                         <xs:complexType>
                             <xs:sequence>
                                 <xs:element name="JMBG" nillable="true">
-                                    <xs:simpleType>
-                                        <xs:restriction base="xs:string">
-                                            <xs:length value="13"/>
-                                        </xs:restriction>
-                                    </xs:simpleType>
+                                    <xs:complexType>
+                                        <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                                <xs:attribute name="property"/>
+                                            </xs:extension>
+                                        </xs:simpleContent>
+                                    </xs:complexType>
                                 </xs:element>
                             </xs:sequence>
                         </xs:complexType>
@@ -204,7 +216,7 @@
     <xs:element name="Kontradikcije">
         <xs:complexType>
             <xs:sequence>
-				<xs:element name="Dijagnoza" type="xs:string"/>
+                <xs:element name="Dijagnoza" type="xs:string"/>
                 <xs:element name="Datum" type="xs:date"/>
                 <xs:element name="Trajne_kontradikcije">
                     <xs:simpleType>

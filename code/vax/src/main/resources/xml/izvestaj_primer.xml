@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Izvestaj xmlns="http://www.xml.proj/sluzb/izvestaj"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.xml.proj/sluzb/izvestaj ../izvestaj.xsd">
+    xsi:schemaLocation="http://www.xml.proj/sluzb/izvestaj ../xsd/izvestaj.xsd"
+    xmlns:pred="http://www.xml.proj/sluzb/rdf/predicate/"
+    about = "http://www.xml.proj/sluzb/izvestaj/8432">
+    <ID>8432</ID>
     <Datum_od>2021-08-01</Datum_od>
     <Datum_do>2021-09-01</Datum_do>
     <Broj_interesovanja>2758</Broj_interesovanja>
-    <Broj_zahteva>453</Broj_zahteva>
-    <Broj_izdatih>428</Broj_izdatih>
+    <Broj_zahteva property="pred:sadrzi">453</Broj_zahteva>
+    <Broj_izdatih property="pred:izdaje">428</Broj_izdatih>
     <Broj_vakcina>3225</Broj_vakcina>
-    <Broj_novovakcinisanih>1789</Broj_novovakcinisanih>
+    <Broj_novovakcinisanih property="pred:vakcinise">1789</Broj_novovakcinisanih>
     <Brojevi_konkretnih_vakcina>
         <Pfizer>1625</Pfizer>
         <Sinopharm>1100</Sinopharm>
