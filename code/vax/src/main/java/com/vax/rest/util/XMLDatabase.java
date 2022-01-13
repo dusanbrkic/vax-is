@@ -41,8 +41,6 @@ public class XMLDatabase {
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | XMLDBException | IOException e) {
 			return false;
 		}finally {
-            
-        	//don't forget to cleanup
             if(res != null) {
                 try { 
                 	((EXistResource)res).freeResources(); 

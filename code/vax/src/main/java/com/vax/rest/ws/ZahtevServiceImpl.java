@@ -56,8 +56,10 @@ public class ZahtevServiceImpl implements ZahtevService {
 		Date d=new Date();
 		GregorianCalendar c = new GregorianCalendar();
 		c.setTime(d);
+		Zahtev.Datum zd=new Zahtev.Datum();
 		try {
-			zahtev.setDatum(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+			zd.setValue(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+			zahtev.setDatum(zd);
 		} catch (DatatypeConfigurationException e) {
 			e.printStackTrace();
 		}

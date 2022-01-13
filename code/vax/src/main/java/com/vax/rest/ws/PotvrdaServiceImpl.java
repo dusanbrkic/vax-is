@@ -37,8 +37,10 @@ public class PotvrdaServiceImpl implements PotvrdaService {
 		Date d=new Date();
 		GregorianCalendar c = new GregorianCalendar();
 		c.setTime(d);
+		Potvrda.Datum pd=new Potvrda.Datum();
 		try {
-			potvrda.setDatum(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+			pd.setValue(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+			potvrda.setDatum(pd);
 		} catch (DatatypeConfigurationException e) {
 			e.printStackTrace();
 		}
