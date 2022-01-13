@@ -2,10 +2,14 @@ package com.vax.rest.inter;
 
 import java.io.IOException;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.xml.sax.SAXException;
 
 import proj.xml.gradj.digitalni_sertifikat.DigitalniSertifikat;
@@ -28,13 +32,18 @@ public interface DSService {
 	public DigitalniSertifikat testStore();
 	
 	@GET
-	@Path("/testRetrive")
+	@Path("/testRetrive/{id}")
 	@Produces("application/xml")
-	public DigitalniSertifikat testRetrive();
+	public DigitalniSertifikat testRetrive(@PathParam("id") Integer id);
 	
 	@GET
 	@Path("/testRDF")
 	public void testRDF() throws SAXException, IOException;
+	
+	@POST
+	@Path("/testPostStore")
+	@Produces("application/xml")
+	public DigitalniSertifikat testPostStore(@RequestBody DigitalniSertifikat ds);
 	
 
 }

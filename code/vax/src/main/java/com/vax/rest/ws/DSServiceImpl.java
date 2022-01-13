@@ -74,17 +74,11 @@ public class DSServiceImpl implements DSService {
 	@Override
 	public DigitalniSertifikat testStore() {
 		DigitalniSertifikat ds = (DigitalniSertifikat) XMLParser.unmarshal("proj.xml.gradj.digitalni_sertifikat", "digitalni_sertifikat.xsd", "digitalni_sertifikat_primer.xml",true,false,null);
-		XMLDatabase.storeXML("/db/sample/library", "1.xml", "proj.xml.gradj.digitalni_sertifikat", ds);
+		XMLDatabase.storeXML("/db/sample/library/ds", "1.xml", "proj.xml.gradj.digitalni_sertifikat", ds);
 		
 		return null;
 	}
-
-	@Override
-	public DigitalniSertifikat testRetrive() {
-		DigitalniSertifikat ds=(DigitalniSertifikat) XMLDatabase.retriveXML("/db/sample/library", "1.xml", "proj.xml.gradj.digitalni_sertifikat");
-		return ds;
-	}
-
+	
 	@Override
 	public void testRDF() throws SAXException, IOException {
 
@@ -100,5 +94,20 @@ public class DSServiceImpl implements DSService {
 		RDFUtil.updateFuseki(rdfFilePath, "ds");
 		
 	}
+
+	@Override
+	public DigitalniSertifikat testPostStore(DigitalniSertifikat ds) {
+		XMLDatabase.storeXML("/db/sample/library/ds", "2.xml", "proj.xml.gradj.digitalni_sertifikat", ds);
+		
+		return ds;
+	}
+
+	@Override
+	public DigitalniSertifikat testRetrive(Integer id) {
+		System.out.println("Retrieve");
+		DigitalniSertifikat ds=(DigitalniSertifikat) XMLDatabase.retriveXML("/db/sample/library/ds", Integer.toString(id)+".xml", "proj.xml.gradj.digitalni_sertifikat");
+		return ds;
+	}
+
 
 }
