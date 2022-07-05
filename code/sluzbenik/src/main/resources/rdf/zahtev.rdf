@@ -1,0 +1,11 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
+  <rdf:Description rdf:about="http://www.xml.proj/gradj/zahtev/1122">
+    <pred:zahteva xmlns:pred="http://www.xml.proj/gradj/rdf/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">0101980660066</pred:zahteva>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.xml.proj/gradj/zahtev/1122">
+    <pred:seNalazi xmlns:pred="http://www.xml.proj/gradj/rdf/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Novi Sad</pred:seNalazi>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.xml.proj/gradj/zahtev/1122">
+    <pred:kreiran xmlns:pred="http://www.xml.proj/gradj/rdf/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">2021-12-01</pred:kreiran>
+  </rdf:Description>
+</rdf:RDF>

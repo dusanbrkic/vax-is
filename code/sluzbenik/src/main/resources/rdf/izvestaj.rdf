@@ -1,0 +1,11 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
+  <rdf:Description rdf:about="http://www.xml.proj/sluzb/izvestaj/8432">
+    <pred:sadrzi xmlns:pred="http://www.xml.proj/sluzb/rdf/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">453</pred:sadrzi>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.xml.proj/sluzb/izvestaj/8432">
+    <pred:izdaje xmlns:pred="http://www.xml.proj/sluzb/rdf/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">428</pred:izdaje>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.xml.proj/sluzb/izvestaj/8432">
+    <pred:vakcinise xmlns:pred="http://www.xml.proj/sluzb/rdf/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">1789</pred:vakcinise>
+  </rdf:Description>
+</rdf:RDF>

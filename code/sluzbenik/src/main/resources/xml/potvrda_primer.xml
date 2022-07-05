@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Potvrda xmlns="http://www.xml.proj/gradj/potvrda"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.xml.proj/gradj/potvrda ../xsd/potvrda.xsd"
+    xmlns:pred="http://www.xml.proj/gradj/rdf/predicate/"
+    about = "http://www.xml.proj/gradj/potvrda/3322">
+    <Ime>Imenko</Ime>
+    <Prezime>Prezimenić</Prezime>
+    <Datum_rodjenja>1980-01-01</Datum_rodjenja>
+    <JMBG property="pred:pripada">0101980660066</JMBG>
+    <Vakcinacija>
+        <Datum_davanja>2021-03-01</Datum_davanja>
+        <Serija>22</Serija>
+    </Vakcinacija>
+    <Vakcinacija>
+        <Datum_davanja>2021-06-01</Datum_davanja>
+        <Serija>542</Serija>
+    </Vakcinacija>
+    <Zdravstvena_ustanova_koja_vakcinise>Dom zdravlja Novi Sad</Zdravstvena_ustanova_koja_vakcinise>
+    <Naziv_vakcine>Pfizer-BioNTech</Naziv_vakcine>
+    <Datum property="pred:kreiran">2021-12-01</Datum>
+    <Zdravstvena_ustanova property="pred:izdaje">Dom zdravlja Novi Sad</Zdravstvena_ustanova>
+    <QR_code>qr-code-3123-321dsads--dasd</QR_code>
+</Potvrda>

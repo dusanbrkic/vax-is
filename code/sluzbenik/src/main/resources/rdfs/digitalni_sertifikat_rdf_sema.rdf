@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xml:lang="en"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    
+    <rdfs:Class rdf:ID="Osoba">
+        <rdfs:label>Osoba</rdfs:label>
+        <rdfs:comment>Predstavlja ljude, građane i službenike</rdfs:comment>
+    </rdfs:Class>
+    
+    <rdfs:Class rdf:ID="Gradjanin">
+        <rdfs:subClassOf rdf:resource="#Osoba"/>
+    </rdfs:Class>
+    
+    <rdfs:Class rdf:ID="Sluzbenik">
+        <rdfs:subClassOf rdf:resource="#Osoba"/>
+    </rdfs:Class>
+    
+    <rdfs:Property rdf:ID="pripada">
+        
+    </rdfs:Property>
+    
+    <rdfs:Property rdf:ID="izdaje">
+        
+    </rdfs:Property>
+    
+    <rdfs:Property rdf:ID="kreiran">
+        
+    </rdfs:Property>
+    
+    
+</rdf:RDF>

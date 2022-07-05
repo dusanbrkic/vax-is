@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interesovanje xmlns="http://www.xml.proj/gradj/interesovanje"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.xml.proj/gradj/interesovanje ../xsd/interesovanje.xsd"
+    xmlns:pred="http://www.xml.proj/gradj/rdf/predicate/"
+    about = "http://www.xml.proj/gradj/interesovanje/3261">
+    <ID>3261</ID>
+    <Opcija_drzavljanin>Држављанин Републике Србије</Opcija_drzavljanin>
+    <JMBG property="pred:izrazava">0101980660066</JMBG>
+    <Ime>Imenko</Ime>
+    <Prezime>Prezimenić</Prezime>
+    <Adresa_elektronske_poste>imenko.prezimenic@gmail.com</Adresa_elektronske_poste>
+    <Broj_mobilnog_telefona>0654448822</Broj_mobilnog_telefona>
+    <Broj_fiksnog_telefona>454334</Broj_fiksnog_telefona>
+    <Lokacija property="pred:seNalazi">Novi Sad</Lokacija>
+    <Proizvodjac_vakcine>Pfizer-BioNTech</Proizvodjac_vakcine>
+    <Davalac_krvi>Da</Davalac_krvi>
+    <Datum property="pred:kreiran">2021-12-01</Datum>
+</Interesovanje>

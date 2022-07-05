@@ -1,0 +1,11 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
+  <rdf:Description rdf:about="http://www.xml.proj/gradj/digitalni_sertifikat/1234">
+    <pred:kreiran xmlns:pred="http://www.xml.proj/gradj/rdf/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">2021-11-29T12:00:00</pred:kreiran>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.xml.proj/gradj/digitalni_sertifikat/1234">
+    <pred:pripada xmlns:pred="http://www.xml.proj/gradj/rdf/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">0101980660066</pred:pripada>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.xml.proj/gradj/digitalni_sertifikat/1234">
+    <pred:izdaje xmlns:pred="http://www.xml.proj/gradj/rdf/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">0101980660</pred:izdaje>
+  </rdf:Description>
+</rdf:RDF>
