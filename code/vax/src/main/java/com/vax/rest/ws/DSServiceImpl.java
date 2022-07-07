@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.ws.rs.Path;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -22,10 +23,12 @@ import org.apache.jena.update.UpdateExecutionFactory;
 import org.apache.jena.update.UpdateFactory;
 import org.apache.jena.update.UpdateProcessor;
 import org.apache.jena.update.UpdateRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
 import com.vax.rest.inter.DSService;
+import com.vax.rest.repository.DigitalniSertifikatRepository;
 import com.vax.rest.util.MetadataExtractor;
 import com.vax.rest.util.RDFUtil;
 import com.vax.rest.util.SparqlUtil;
@@ -39,6 +42,9 @@ import proj.xml.gradj.interesovanje.Interesovanje;
 @Service
 @Path("/ds")
 public class DSServiceImpl implements DSService {
+	
+	@Autowired
+	private DigitalniSertifikatRepository digitalniSertifikatRepository;
 
 	@Override
 	public DigitalniSertifikat testUnmarshal() {
@@ -46,6 +52,11 @@ public class DSServiceImpl implements DSService {
 		
 		DigitalniSertifikat ds = (DigitalniSertifikat) XMLParser.unmarshal("proj.xml.gradj.digitalni_sertifikat", "digitalni_sertifikat.xsd", "digitalni_sertifikat_primer.xml",true,false,null);	
 		System.out.println(ds);	
+		
+		List<DigitalniSertifikat> lista = digitalniSertifikatRepository.getAll();
+		for(DigitalniSertifikat dig : lista) {
+			System.out.println(dig.getOsnovniPodaci().getBrojSertifikata());
+		}
 		
 		
 		return ds;
