@@ -1,6 +1,6 @@
 package com.vax.rest.controller;
 
-import com.vax.rest.inter.ObrazacService;
+import com.vax.rest.service.ObrazacService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,6 +1,6 @@
-package com.vax.rest.ws;
+package com.vax.rest.service.impl;
 
-import com.vax.rest.inter.ZahtevService;
+import com.vax.rest.service.ZahtevService;
 import com.vax.rest.util.RDFUtil;
 import com.vax.rest.util.XMLDatabase;
 import com.vax.rest.util.XMLParser;

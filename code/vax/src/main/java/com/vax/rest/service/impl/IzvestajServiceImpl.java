@@ -1,4 +1,4 @@
-package com.vax.rest.ws;
+package com.vax.rest.service.impl;
 
 import java.io.IOException;
 import java.util.Date;
@@ -11,7 +11,7 @@ import javax.xml.datatype.DatatypeFactory;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
-import com.vax.rest.inter.IzvestajService;
+import com.vax.rest.service.IzvestajService;
 import com.vax.rest.util.RDFUtil;
 import com.vax.rest.util.XMLDatabase;
 import com.vax.rest.util.XMLParser;

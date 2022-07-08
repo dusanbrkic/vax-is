@@ -19,8 +19,7 @@ public class IzvestajRepository {
 	}
 	
 	public Izvestaj retrieveById(Integer id) {
-		Izvestaj ds=(Izvestaj) XMLDatabase.retriveXML(collectionId, Integer.toString(id)+".xml", contextPath);
-		return ds;
+		return (Izvestaj) XMLDatabase.retriveXML(collectionId, Integer.toString(id)+".xml", contextPath);
 	}
 	
 	public List<Izvestaj> getAll() {

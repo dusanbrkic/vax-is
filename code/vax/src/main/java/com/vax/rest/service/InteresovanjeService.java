@@ -1,37 +1,38 @@
-package com.vax.rest.inter;
+package com.vax.rest.service;
 
-import org.xml.sax.SAXException;
-import proj.xml.gradj.potvrda.Potvrda;
-import proj.xml.gradj.zahtev.Zahtev;
+import java.io.IOException;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import java.io.IOException;
 
-public interface ZahtevService {
+import org.xml.sax.SAXException;
 
+import proj.xml.gradj.interesovanje.Interesovanje;
+
+public interface InteresovanjeService {
 	@GET
 	@Path("/testUnmarshal")
 	@Produces("application/xml")
-	public Zahtev testUnmarshal();
-
+	public Interesovanje testUnmarshal();
+	
 	@GET
 	@Path("/testMarshal")
 	@Produces("application/xml")
-	public Zahtev testMarshal();
-
+	public Interesovanje testMarshal();
+	
 	@GET
 	@Path("/testStore")
 	@Produces("application/xml")
-	public Zahtev testStore();
-
+	public Interesovanje testStore();
+	
 	@GET
-	@Path("/testRetrive")
+	@Path("/testRetrieve")
 	@Produces("application/xml")
-	public Zahtev testRetrive();
+	public Interesovanje testRetrieve();
 	
 	@GET
 	@Path("/testRDF")
 	public void testRDF() throws SAXException, IOException;
+
 }

@@ -1,29 +1,21 @@
-package com.vax.rest.ws;
+package com.vax.rest.service.impl;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javax.ws.rs.Path;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
-import javax.xml.transform.TransformerException;
 
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
-import com.vax.rest.inter.InteresovanjeService;
-import com.vax.rest.util.MetadataExtractor;
+import com.vax.rest.service.InteresovanjeService;
 import com.vax.rest.util.RDFUtil;
 import com.vax.rest.util.XMLDatabase;
 import com.vax.rest.util.XMLParser;
 
-import proj.xml.gradj.digitalni_sertifikat.DigitalniSertifikat;
-import proj.xml.gradj.digitalni_sertifikat.DigitalniSertifikat.OsnovniPodaci;
 import proj.xml.gradj.interesovanje.Interesovanje;
 
 @Service

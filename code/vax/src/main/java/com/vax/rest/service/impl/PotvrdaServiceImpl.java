@@ -1,6 +1,6 @@
-package com.vax.rest.ws;
+package com.vax.rest.service.impl;
 
-import com.vax.rest.inter.PotvrdaService;
+import com.vax.rest.service.PotvrdaService;
 import com.vax.rest.util.RDFUtil;
 import com.vax.rest.util.XMLDatabase;
 import com.vax.rest.util.XMLParser;
