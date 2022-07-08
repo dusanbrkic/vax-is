@@ -1,9 +1,11 @@
 package com.vax.rest.service.impl;
 
+import com.vax.rest.repository.ZahtevRepository;
 import com.vax.rest.service.ZahtevService;
 import com.vax.rest.util.RDFUtil;
 import com.vax.rest.util.XMLDatabase;
 import com.vax.rest.util.XMLParser;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import proj.xml.gradj.zahtev.Zahtev;
@@ -14,10 +16,12 @@ import javax.xml.datatype.DatatypeFactory;
 import java.io.IOException;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 @Service
-@Path("/zahtev")
+@RequiredArgsConstructor
 public class ZahtevServiceImpl implements ZahtevService {
+	private final ZahtevRepository zahtevRepository;
 
 	@Override
 	public Zahtev testUnmarshal() {
@@ -92,5 +96,10 @@ public class ZahtevServiceImpl implements ZahtevService {
 		//upis u bazu
 		RDFUtil.updateFuseki(rdfFilePath, "zahtev");
 		
+	}
+
+	@Override
+	public List<Zahtev> retrieveAll() {
+		return zahtevRepository.getAll();
 	}
 }

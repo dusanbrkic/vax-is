@@ -4,8 +4,11 @@ import com.sluzbenik.rest.service.ZahtevService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import proj.xml.gradj.zahtev.Zahtev;
 
-@RequestMapping("api/zahtev-sertifikata")
+import java.util.List;
+
+@RequestMapping("/api/zahtev-sertifikata")
 @RestController
 // 1. одговори на захтев за издавање дигиталног зеленог сертификат
 // ако службеник одбије захтев за издавање сертификата, неопходно је да
@@ -43,15 +46,15 @@ public class ZahtevController {
     }
 
     @GetMapping(value = "/{jmbg}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
-    public void getZahtevJmbg(@PathVariable String jmbg){
-        zahtevSertifikataService.getZahtevJmbg(jmbg);
+    public Zahtev getZahtevJmbg(@PathVariable String jmbg){
+        return zahtevSertifikataService.getZahtevJmbg(jmbg);
     }
     @GetMapping(value = "/{brPasosa}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
-    public void getZahtevBrPasosa(@PathVariable String brPasosa){
-        zahtevSertifikataService.getZahtevBrPasosa(brPasosa);
+    public Zahtev getZahtevBrPasosa(@PathVariable String brPasosa){
+        return zahtevSertifikataService.getZahtevBrPasosa(brPasosa);
     }
     @GetMapping(value = "/all", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
-    public void getAllZahtevi(){
-        zahtevSertifikataService.getAllZahtevi();
+    public List<Zahtev> getAllZahtevi(){
+        return zahtevSertifikataService.getAllZahtevi();
     }
 }

@@ -1,5 +1,9 @@
 package com.sluzbenik.rest.service;
 
+import proj.xml.gradj.zahtev.Zahtev;
+
+import java.util.List;
+
 public interface ZahtevService {
     public void odbijZahtevJmbg(String jmbg);
     public void prihvatiZahtevJmbg(String jmbg);
@@ -8,9 +12,9 @@ public interface ZahtevService {
 
     public void prihvatiZahtevBrPasosa(String brPasosa);
 
-    public void getZahtevBrPasosa(String brPasosa);
+    public Zahtev getZahtevBrPasosa(String brPasosa);
 
-    public void getZahtevJmbg(String jmbg);
+    public Zahtev getZahtevJmbg(String jmbg);
 
-    public void getAllZahtevi();
+    public List<Zahtev> getAllZahtevi();
 }

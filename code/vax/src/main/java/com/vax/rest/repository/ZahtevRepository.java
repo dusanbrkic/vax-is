@@ -27,6 +27,7 @@ public class ZahtevRepository {
 	public List<Zahtev> getAll() {
 		List<Object> res =  XMLDatabase.retriveAllXML(collectionId, contextPath);
 		List<Zahtev> result = new ArrayList<Zahtev>();
+		assert res != null;
 		for (Object object : res) {
 			result.add((Zahtev) object);
 		}
