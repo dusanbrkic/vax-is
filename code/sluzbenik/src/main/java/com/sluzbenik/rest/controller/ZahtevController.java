@@ -1,11 +1,11 @@
 package com.sluzbenik.rest.controller;
 
-import com.sluzbenik.rest.service.ZahtevSertifikataService;
+import com.sluzbenik.rest.service.ZahtevService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("api/sertifikat")
+@RequestMapping("api/zahtev-sertifikata")
 @RestController
 // 1. одговори на захтев за издавање дигиталног зеленог сертификат
 // ако службеник одбије захтев за издавање сертификата, неопходно је да
@@ -18,16 +18,16 @@ import org.springframework.web.bind.annotation.*;
 // електронско писмо укључује сертификат у виду докумената у XHTML и PDF
 // формату (документи у виду attachment-а или линка за преузимање
 // докумената).
-public class ZahtevSertifikataController {
+public class ZahtevController {
     @Autowired
-    private ZahtevSertifikataService zahtevSertifikataService;
+    private ZahtevService zahtevSertifikataService;
 
-    @PatchMapping(value = "/{jmbg}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
+    @PatchMapping(value = "/odbij/{jmbg}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
     public void odbijZahtev(@PathVariable String jmbg){
         zahtevSertifikataService.odbijZahtev(jmbg);
     }
 
-    @PatchMapping(value = "/{jmbg}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
+    @PatchMapping(value = "/prihvati{jmbg}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
     public void prihvatiZahtev(@PathVariable String jmbg){
         zahtevSertifikataService.prihvatiZahtev(jmbg);
     }

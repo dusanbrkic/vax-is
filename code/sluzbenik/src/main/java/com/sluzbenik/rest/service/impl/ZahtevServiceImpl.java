@@ -1,10 +1,10 @@
 package com.sluzbenik.rest.service.impl;
 
-import com.sluzbenik.rest.service.ZahtevSertifikataService;
+import com.sluzbenik.rest.service.ZahtevService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ZahtevSertifikataServiceImpl implements ZahtevSertifikataService {
+public class ZahtevServiceImpl implements ZahtevService {
 
     @Override
     public void odbijZahtev(String jmbg) {
