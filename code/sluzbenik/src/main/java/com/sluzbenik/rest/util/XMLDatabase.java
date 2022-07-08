@@ -13,6 +13,8 @@ import javax.xml.transform.OutputKeys;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class XMLDatabase {
 	
@@ -103,6 +105,58 @@ public class XMLDatabase {
 		return null;
 	}
 	
+public static List<Object> retriveAllXML(String collectionId,String contextPath) {
+		
+		Collection col = null;
+        XMLResource res = null;
+        List<Object> result = new ArrayList<Object>();
+		
+		try {
+			ConnectionProperties conn=AuthenticationUtilities.loadProperties();
+			Class<?> cl = Class.forName(conn.driver);
+			
+			Database database = (Database) cl.newInstance();
+	        database.setProperty("create-database", "true");
+	        
+	        DatabaseManager.registerDatabase(database);
+	        
+	        col = DatabaseManager.getCollection(conn.uri + collectionId);
+            col.setProperty(OutputKeys.INDENT, "yes");
+            
+            
+            for (String resourceId : col.listResources()) {
+            	res = (XMLResource)col.getResource(resourceId);
+            	if(res == null) {
+                    System.out.println("[WARNING] Document '" + resourceId + "' can not be found!");
+                } else {
+        			result.add(XMLParser.unmarshal(contextPath, "","", false,true,res));	
+                }
+			}
+            return result;
+            
+            
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | XMLDBException | IOException e) {
+			e.printStackTrace();
+		}finally {
+            if(res != null) {
+                try { 
+                	((EXistResource)res).freeResources(); 
+                } catch (XMLDBException xe) {
+                	xe.printStackTrace();
+                }
+            }
+            
+            if(col != null) {
+                try { 
+                	col.close(); 
+                } catch (XMLDBException xe) {
+                	xe.printStackTrace();
+                }
+            }
+		}
+		return null;
+	}
+	
 	private static Collection getOrCreateCollection(String collectionUri, int pathSegmentOffset,ConnectionProperties conn) throws XMLDBException {
         
         Collection col = DatabaseManager.getCollection(conn.uri + collectionUri, conn.user, conn.password);
@@ -149,5 +203,38 @@ public class XMLDatabase {
             return col;
         }
     }
+	
+	
+	public static boolean createCollectionIfNotExist(String collectionId) {
+		
+		Collection col = null;
+		try {
+			ConnectionProperties conn=AuthenticationUtilities.loadProperties();
+			Class<?> cl = Class.forName(conn.driver);
+			Database database = (Database) cl.newInstance();
+	        database.setProperty("create-database", "true");
+	        DatabaseManager.registerDatabase(database);
+	        
+	        OutputStream os = new ByteArrayOutputStream();
+	        
+	        col = getOrCreateCollection(collectionId,0,conn);
+	        
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | XMLDBException | IOException e) {
+			return false;
+		}finally {
+         
+            
+            if(col != null) {
+                try { 
+                	col.close(); 
+                } catch (XMLDBException xe) {
+                	xe.printStackTrace();
+                }
+            }
+        }
+		return true;
+	}
+	
+	
 
 }

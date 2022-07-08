@@ -1,18 +1,18 @@
-package com.vax.rest.repository;
+package com.sluzbenik.rest.repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.vax.rest.util.XMLDatabase;
+import com.sluzbenik.rest.util.XMLDatabase;
 
 import proj.xml.sluzb.izvestaj.Izvestaj;
 
 @Repository
 public class IzvestajRepository {
 	private static String collectionId = "/db/sample/library/izvestaj";
-	private static String contextPath = "proj.xml.gradj.izvestaj";
+	private static String contextPath = "proj.xml.sluzb.izvestaj";
 	
 	public void store(Izvestaj i) {
 		XMLDatabase.storeXML(collectionId, i.getID().toString()+".xml", contextPath, i);

@@ -2,9 +2,10 @@ package com.sluzbenik.rest.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("api/gradjanin")
-@Controller
+@RestController
 //4. претражује архиву докумената која припада грађанину (сагласност, потврда,
 //        сертификат)
 //        ● претрагу докумената по текстуалном садржају (тј. основну претрагу)

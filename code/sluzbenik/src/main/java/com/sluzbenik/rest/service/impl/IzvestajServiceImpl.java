@@ -12,11 +12,11 @@ import javax.ws.rs.Path;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 @Service
-@Path("/izvestaj")
 public class IzvestajServiceImpl implements IzvestajService {
 
 	@Override
@@ -73,6 +73,12 @@ public class IzvestajServiceImpl implements IzvestajService {
 		
 		//upis u bazu
 		RDFUtil.updateFuseki(rdfFilePath, "izvestaj");
+	}
+
+	@Override
+	public Izvestaj generisiIzvestaj(LocalDateTime fromTimestamp, LocalDateTime toTimestamp) {
+		// TODO
+		return null;
 	}
 
 }
