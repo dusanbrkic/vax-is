@@ -5,5 +5,5 @@ import proj.xml.gradj.obrazac.Obrazac;
 public interface ObrazacService {
     public Obrazac getObrazacByJmbg(String jmbg);
 
-    public Obrazac getAllObrasci();
+    public Obrazac[] getAllObrasci();
 }

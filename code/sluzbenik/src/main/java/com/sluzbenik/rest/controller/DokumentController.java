@@ -59,11 +59,11 @@ public class DokumentController {
         return sertifikatService.getAllSertifikati();
     }
     @GetMapping(value = "/potvrda/all", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
-    public Potvrda getAllPotvrde() {
+    public Potvrda[] getAllPotvrde() {
         return potvrdaService.getAllPotvrde();
     }
     @GetMapping(value = "/obrazac/all", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
-    public Obrazac getAllObrasci() {
+    public Obrazac[] getAllObrasci() {
         return obrazacService.getAllObrasci();
     }
 }

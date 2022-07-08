@@ -13,7 +13,7 @@ public class ObrazacServiceImpl implements ObrazacService {
     }
 
     @Override
-    public Obrazac getAllObrasci() {
+    public Obrazac[] getAllObrasci() {
         return null;
     }
 }

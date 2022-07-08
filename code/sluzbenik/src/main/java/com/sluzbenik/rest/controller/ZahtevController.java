@@ -23,12 +23,35 @@ public class ZahtevController {
     private ZahtevService zahtevSertifikataService;
 
     @PatchMapping(value = "/odbij/{jmbg}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
-    public void odbijZahtev(@PathVariable String jmbg){
-        zahtevSertifikataService.odbijZahtev(jmbg);
+    public void odbijZahtevJmbg(@PathVariable String jmbg){
+        zahtevSertifikataService.odbijZahtevJmbg(jmbg);
     }
 
-    @PatchMapping(value = "/prihvati{jmbg}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
-    public void prihvatiZahtev(@PathVariable String jmbg){
-        zahtevSertifikataService.prihvatiZahtev(jmbg);
+    @PatchMapping(value = "/prihvati/{jmbg}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
+    public void prihvatiZahtevJmbg(@PathVariable String jmbg){
+        zahtevSertifikataService.prihvatiZahtevJmbg(jmbg);
+    }
+
+    @PatchMapping(value = "/odbij/{brPasosa}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
+    public void odbijZahtevBrPasosa(@PathVariable String brPasosa){
+        zahtevSertifikataService.odbijZahtevBrPasosa(brPasosa);
+    }
+
+    @PatchMapping(value = "/prihvati/{brPasosa}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
+    public void prihvatiZahtevBrPasosa(@PathVariable String brPasosa){
+        zahtevSertifikataService.prihvatiZahtevBrPasosa(brPasosa);
+    }
+
+    @GetMapping(value = "/{jmbg}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
+    public void getZahtevJmbg(@PathVariable String jmbg){
+        zahtevSertifikataService.getZahtevJmbg(jmbg);
+    }
+    @GetMapping(value = "/{brPasosa}", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
+    public void getZahtevBrPasosa(@PathVariable String brPasosa){
+        zahtevSertifikataService.getZahtevBrPasosa(brPasosa);
+    }
+    @GetMapping(value = "/all", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
+    public void getAllZahtevi(){
+        zahtevSertifikataService.getAllZahtevi();
     }
 }

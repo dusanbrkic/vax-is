@@ -1,6 +1,7 @@
 package com.vax.rest.inter;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,27 +12,12 @@ import org.xml.sax.SAXException;
 import proj.xml.gradj.obrazac.Obrazac;
 
 public interface ObrazacService {
-	@GET
-	@Path("/testUnmarshal")
-	@Produces("application/xml")
-	public Obrazac testUnmarshal();
-	
-	@GET
-	@Path("/testMarshal")
-	@Produces("application/xml")
-	public Obrazac testMarshal();
-	
-	@GET
-	@Path("/testStore")
-	@Produces("application/xml")
-	public Obrazac testStore();
-	
-	@GET
-	@Path("/testRetrieve")
-	@Produces("application/xml")
+	public void store(Obrazac obrazac);
+
 	public Obrazac testRetrieve();
-	
-	@GET
-	@Path("/testRDF")
+	// TODO iz XML stringa treba da se pravi rdf
 	public void testRDF() throws SAXException, IOException;
+    public List<Obrazac> getAllObrasci();
+	Obrazac getObrazacByJmbg(String jmbg);
+	Obrazac getObrazacByBrPasosa(String brPasosa);
 }

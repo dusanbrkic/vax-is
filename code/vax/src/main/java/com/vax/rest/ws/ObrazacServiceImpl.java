@@ -3,11 +3,14 @@ package com.vax.rest.ws;
 import java.io.IOException;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.ws.rs.Path;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
+import com.vax.rest.repository.ObrazacRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
@@ -21,42 +24,13 @@ import proj.xml.gradj.obrazac.Obrazac.PodaciOPacijentu;
 
 
 @Service
-@Path("/obrazac")
 public class ObrazacServiceImpl implements ObrazacService {
+	@Autowired
+	ObrazacRepository obrazacRepository;
 
 	@Override
-	public Obrazac testUnmarshal() {
-		
-		System.out.println("Testing unmarshal");
-		
-		Obrazac obrazac = (Obrazac) XMLParser.unmarshal("proj.xml.gradj.obrazac", "obrazac.xsd", "obrazac_primer.xml",true,false,null);	
-		System.out.println(obrazac);	
-		
-		
-		return obrazac;
-	}
-
-	@Override
-	public Obrazac testMarshal() {
-		Obrazac obrazac = new Obrazac();
-		obrazac.setPodaciOPacijentu(new PodaciOPacijentu());
-		/*
-		try {
-			
-		} catch (DatatypeConfigurationException e) {
-			e.printStackTrace();
-		}
-		*/
-		
-		XMLParser.marshal("proj.xml.gradj.obrazac", "obrazac.xsd",obrazac,System.out,false);
-		return null;
-	}
-
-	@Override
-	public Obrazac testStore() {
-		Obrazac obrazac = (Obrazac) XMLParser.unmarshal("proj.xml.gradj.obrazac", "obrazac.xsd", "obrazac_primer.xml",true,false,null);
+	public void store(Obrazac obrazac) {
 		XMLDatabase.storeXML("/db/sample/library", "4.xml", "proj.xml.gradj.obrazac", obrazac);
-		return null;
 	}
 
 	@Override
@@ -76,6 +50,21 @@ public class ObrazacServiceImpl implements ObrazacService {
 		
 		//upis u bazu
 		RDFUtil.updateFuseki(rdfFilePath, "obrazac");
+	}
+
+	@Override
+	public List<Obrazac> getAllObrasci() {
+		return obrazacRepository.getAll();
+	}
+
+	@Override
+	public Obrazac getObrazacByJmbg(String jmbg) {
+		return obrazacRepository.getObrazacByJmbg(jmbg);
+	}
+
+	@Override
+	public Obrazac getObrazacByBrPasosa(String brPasosa) {
+		return obrazacRepository.getObrazacByBrPasosa(brPasosa);
 	}
 
 }

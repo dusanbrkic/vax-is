@@ -12,7 +12,7 @@ public class PotvrdaServiceImpl implements PotvrdaService {
     }
 
     @Override
-    public Potvrda getAllPotvrde() {
+    public Potvrda[] getAllPotvrde() {
         return null;
     }
 }
