@@ -8,6 +8,8 @@ import javax.ws.rs.Path;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
+import com.vax.rest.repository.InteresovanjeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
@@ -21,6 +23,9 @@ import proj.xml.gradj.interesovanje.Interesovanje;
 @Service
 @Path("/interesovanje")
 public class InteresovanjeServiceImpl implements InteresovanjeService {
+
+	@Autowired
+	private InteresovanjeRepository interesovanjeRepository;
 
 	@Override
 	public Interesovanje testUnmarshal() {
@@ -78,6 +83,10 @@ public class InteresovanjeServiceImpl implements InteresovanjeService {
 		RDFUtil.updateFuseki(rdfFilePath, "interesovanje");
 	}
 
-	
+	@Override
+	public Interesovanje getInteresovanjeByJmbg(String jmbg) {
+		return interesovanjeRepository.retrieveByJmbg(jmbg);
+	}
+
 
 }

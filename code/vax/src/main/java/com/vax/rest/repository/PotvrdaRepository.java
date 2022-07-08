@@ -19,8 +19,7 @@ public class PotvrdaRepository {
 	}
 	
 	public Potvrda retrieveByJMBG(String jmbg) {
-		Potvrda ds=(Potvrda) XMLDatabase.retriveXML(collectionId, jmbg+".xml", contextPath);
-		return ds;
+		return (Potvrda) XMLDatabase.retriveXML(collectionId, jmbg+".xml", contextPath);
 	}
 	
 	public List<Potvrda> getAll() {

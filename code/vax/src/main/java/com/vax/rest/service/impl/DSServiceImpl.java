@@ -98,6 +98,16 @@ public class DSServiceImpl implements DSService {
 	}
 
 	@Override
+	public DigitalniSertifikat getSertifikatByJmbg(String jmbg) {
+		return digitalniSertifikatRepository.retrieveByJmbg(jmbg);
+	}
+
+	@Override
+	public DigitalniSertifikat getSertifikatByBrojPasosa(String brojPasosa) {
+		return digitalniSertifikatRepository.retrieveByBrojPasosa(brojPasosa);
+	}
+
+	@Override
 	public DigitalniSertifikat testRetrive(Integer id) {
 		System.out.println("Retrieve");
 		DigitalniSertifikat ds=(DigitalniSertifikat) XMLDatabase.retriveXML("/db/sample/library/ds", Integer.toString(id)+".xml", "proj.xml.gradj.digitalni_sertifikat");

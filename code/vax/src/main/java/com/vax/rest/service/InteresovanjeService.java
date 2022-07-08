@@ -35,4 +35,5 @@ public interface InteresovanjeService {
 	@Path("/testRDF")
 	public void testRDF() throws SAXException, IOException;
 
+    public Interesovanje getInteresovanjeByJmbg(String jmbg);
 }

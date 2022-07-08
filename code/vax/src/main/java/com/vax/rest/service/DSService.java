@@ -43,6 +43,8 @@ public interface DSService {
 	@Path("/testPostStore")
 	@Produces("application/xml")
 	public DigitalniSertifikat testPostStore(@RequestBody DigitalniSertifikat ds);
-	
 
+    public DigitalniSertifikat getSertifikatByJmbg(String jmbg);
+
+	public DigitalniSertifikat getSertifikatByBrojPasosa(String brojPasosa);
 }

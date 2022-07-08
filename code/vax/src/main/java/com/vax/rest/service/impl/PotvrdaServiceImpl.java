@@ -1,9 +1,11 @@
 package com.vax.rest.service.impl;
 
+import com.vax.rest.repository.PotvrdaRepository;
 import com.vax.rest.service.PotvrdaService;
 import com.vax.rest.util.RDFUtil;
 import com.vax.rest.util.XMLDatabase;
 import com.vax.rest.util.XMLParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import proj.xml.gradj.potvrda.Potvrda;
@@ -18,6 +20,8 @@ import java.util.GregorianCalendar;
 @Service
 @Path("/potvrda")
 public class PotvrdaServiceImpl implements PotvrdaService {
+	@Autowired
+	private PotvrdaRepository potvrdaRepository;
 
 	@Override
 	public Potvrda testUnmarshal() {
@@ -72,5 +76,10 @@ public class PotvrdaServiceImpl implements PotvrdaService {
 
 		//upis u bazu
 		RDFUtil.updateFuseki(rdfFilePath, "potvrda");
+	}
+
+	@Override
+	public Potvrda getPotvrdaByJmbg(String jmbg) {
+		return potvrdaRepository.retrieveByJMBG(jmbg);
 	}
 }

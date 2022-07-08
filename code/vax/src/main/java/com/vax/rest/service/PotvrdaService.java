@@ -33,4 +33,6 @@ public interface PotvrdaService {
 	@GET
 	@Path("/testRDF")
 	public void testRDF() throws SAXException, IOException;
+
+    public Potvrda getPotvrdaByJmbg(String jmbg);
 }
