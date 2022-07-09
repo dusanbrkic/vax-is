@@ -11,7 +11,7 @@ import Environment from "../Constants/Environment";
 
 function Header(props) {
   const handleLogout = () => {};
-  if (props.user) {
+  if (!props.user) {
     return (
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
@@ -24,6 +24,39 @@ function Header(props) {
             >
               <Link style={{ textDecoration: "none" }} to="/home">
                 Home
+              </Link>
+            </Typography>
+            <Typography
+              color="inherit"
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+              <Link
+                style={{ textDecoration: "none" }}
+                to="/certificateRequests"
+              >
+                Certificate requests
+              </Link>
+            </Typography>
+            <Typography
+              color="inherit"
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+              <Link style={{ textDecoration: "none" }} to="/reports">
+                Reports
+              </Link>
+            </Typography>
+            <Typography
+              color="inherit"
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+              <Link style={{ textDecoration: "none" }} to="/vaccines">
+                Vaccines
               </Link>
             </Typography>
 
@@ -58,16 +91,6 @@ function Header(props) {
             >
               <Link style={{ textDecoration: "none" }} to="/login">
                 Login
-              </Link>
-            </Typography>
-            <Typography
-              color="inherit"
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1 }}
-            >
-              <Link style={{ textDecoration: "none" }} to="/register">
-                Register
               </Link>
             </Typography>
           </Toolbar>

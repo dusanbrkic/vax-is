@@ -1,4 +1,4 @@
 const Environment = {
-  baseURL: "https://localhost:8080/",
+  baseURL: "http://localhost:8082/",
 };
 export default Environment;
