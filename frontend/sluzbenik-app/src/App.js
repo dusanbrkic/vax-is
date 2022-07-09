@@ -10,14 +10,15 @@ import {
 import CertificateRequests from "./Components/CertificateRequests";
 import Report from "./Components/Report";
 import Vaccines from "./Components/Vaccines";
+import Login from "./Components/Login";
 
 function App() {
   return (
     <Router>
       <div className="app">
         <Routes>
-          <Route exact path="/home" element={<Home />}></Route>
-
+          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/login" element={<Login />}></Route>
           <Route
             exact
             path="/certificateRequests"
