@@ -18,7 +18,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 @Service
-@Path("/potvrda")
 public class PotvrdaServiceImpl implements PotvrdaService {
 	@Autowired
 	private PotvrdaRepository potvrdaRepository;

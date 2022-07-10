@@ -3,9 +3,15 @@ package com.vax.rest.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.exist.xmldb.EXistResource;
 import org.springframework.stereotype.Repository;
+import org.xmldb.api.base.ResourceIterator;
+import org.xmldb.api.base.ResourceSet;
+import org.xmldb.api.base.XMLDBException;
+import org.xmldb.api.modules.XMLResource;
 
 import com.vax.rest.util.XMLDatabase;
+import com.vax.rest.util.XMLParser;
 
 import proj.xml.gradj.digitalni_sertifikat.DigitalniSertifikat;
 import proj.xml.gradj.interesovanje.Interesovanje;
@@ -36,9 +42,33 @@ public class InteresovanjeRepository {
 	}
 
     public Interesovanje retrieveByJmbg(String jmbg) {
+    	Interesovanje interesovanje = null;
 		String xPathIzraz = String.format("//Interesovanje[JMBG = '%s']", jmbg);
 		try {
-			return (Interesovanje) XMLDatabase.izvrsiXPathIzraz(collectionId, xPathIzraz, schemaName);
+			ResourceSet rs= XMLDatabase.izvrsiXPathIzraz(collectionId, xPathIzraz, schemaName);
+			
+			if (rs == null)
+	            return null;
+
+	        ResourceIterator i = rs.getIterator();
+	        XMLResource res = null;
+
+	        if (i.hasMoreResources()) {
+	            res = (XMLResource) i.nextResource();
+	        }
+
+	        if (res != null) {
+	            try {
+	            	interesovanje = (Interesovanje) XMLParser.unmarshal(contextPath, "","", false,true,res);
+	            	
+	                ((EXistResource) res).freeResources();
+	            } catch (XMLDBException exception) {
+	                exception.printStackTrace();
+	            }
+	        }
+	        
+	        
+			return interesovanje;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

@@ -19,7 +19,6 @@ import com.vax.rest.util.XMLParser;
 import proj.xml.sluzb.izvestaj.Izvestaj;
 
 @Service
-@Path("/izvestaj")
 public class IzvestajServiceImpl implements IzvestajService {
 
 	@Override

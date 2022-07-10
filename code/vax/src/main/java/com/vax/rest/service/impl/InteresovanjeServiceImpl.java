@@ -21,7 +21,6 @@ import com.vax.rest.util.XMLParser;
 import proj.xml.gradj.interesovanje.Interesovanje;
 
 @Service
-@Path("/interesovanje")
 public class InteresovanjeServiceImpl implements InteresovanjeService {
 
 	@Autowired

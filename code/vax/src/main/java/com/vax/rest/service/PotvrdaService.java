@@ -10,28 +10,14 @@ import java.io.IOException;
 
 public interface PotvrdaService {
 
-	@GET
-	@Path("/testUnmarshal")
-	@Produces("application/xml")
 	public Potvrda testUnmarshal();
 
-	@GET
-	@Path("/testMarshal")
-	@Produces("application/xml")
 	public Potvrda testMarshal();
 
-	@GET
-	@Path("/testStore")
-	@Produces("application/xml")
 	public Potvrda testStore();
 
-	@GET
-	@Path("/testRetrive")
-	@Produces("application/xml")
 	public Potvrda testRetrive();
 	
-	@GET
-	@Path("/testRDF")
 	public void testRDF() throws SAXException, IOException;
 
     public Potvrda getPotvrdaByJmbg(String jmbg);
