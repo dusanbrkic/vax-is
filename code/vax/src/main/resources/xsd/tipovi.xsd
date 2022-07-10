@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.xml.proj/gradj/tipovi" elementFormDefault="qualified"
+    xmlns="http://www.xml.proj/gradj/tipovi" xmlns:tipovi="http://www.xml.proj/gradj/tipovi">
+    <xs:simpleType name="Pol">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Muski"/>
+            <xs:enumeration value="Zenski"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="PunoIme">
+        <xs:sequence>
+            <xs:element name="Ime" type="xs:string"/>
+            <xs:element name="Prezime" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Role">
+        <xs:sequence>
+            <xs:element name="RoleName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Korisnik" abstract="true">
+        <xs:sequence>
+            <xs:element name="Ime_i_prezime" type="tipovi:PunoIme"> </xs:element>
+            <xs:element name="Email">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[^@]+@[^\.]+\..+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Lozinka" type="xs:string"/>
+            <xs:element name="JMBG">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="13"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Enabled" type="xs:boolean"/>
+            <xs:element name="Roles" type="tipovi:Role" maxOccurs="unbounded"/>
+            <xs:element name="last_password_reset" minOccurs="0" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="RezultatTesta">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Pozitivan"/>
+            <xs:enumeration value="Negativan"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="Gradjanin">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="tipovi:Korisnik">
+                    <xs:sequence>
+                        <xs:element name="Pol" type="tipovi:Pol"/>
+                        <xs:element name="Opcija_drzavljanin">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Drzavljanin Republike Srbije"/>
+                                    <xs:enumeration value="Strani drzavljanin sa boravkom u RS"/>
+                                    <xs:enumeration value="Strani drzavljanin bez boravka u RS"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ZdravstveniRadnik">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="tipovi:Korisnik">
+                    <xs:sequence>
+                        <xs:element name="Zdravstvena_ustanova" type="xs:string"/>
+                        <xs:element name="Punkt" type="xs:positiveInteger"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
