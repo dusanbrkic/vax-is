@@ -27,4 +27,6 @@ public interface InteresovanjeService {
 	public void testRDF() throws SAXException, IOException;
 
     public Interesovanje getInteresovanjeByJmbg(String jmbg);
+    
+    public void createInteresovanje(Interesovanje i);
 }

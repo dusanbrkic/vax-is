@@ -1,6 +1,5 @@
 package com.vax.rest;
 
-import com.vax.rest.controller.ObrazacController;
 import com.vax.rest.util.XMLDatabase;
 import lombok.RequiredArgsConstructor;
 

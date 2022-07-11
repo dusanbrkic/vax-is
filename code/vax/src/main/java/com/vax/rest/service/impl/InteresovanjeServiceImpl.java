@@ -8,6 +8,8 @@ import javax.ws.rs.Path;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
+import com.vax.rest.email.EmailService;
+import com.vax.rest.repository.GradjaninRepository;
 import com.vax.rest.repository.InteresovanjeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,11 @@ public class InteresovanjeServiceImpl implements InteresovanjeService {
 
 	@Autowired
 	private InteresovanjeRepository interesovanjeRepository;
+	
+	@Autowired
+	private GradjaninRepository gradjaninRepository;
+	@Autowired
+	private EmailService emailService;
 
 	@Override
 	public Interesovanje testUnmarshal() {
@@ -85,6 +92,13 @@ public class InteresovanjeServiceImpl implements InteresovanjeService {
 	@Override
 	public Interesovanje getInteresovanjeByJmbg(String jmbg) {
 		return interesovanjeRepository.retrieveByJmbg(jmbg);
+	}
+
+	@Override
+	public void createInteresovanje(Interesovanje i) {
+		interesovanjeRepository.store(i);
+		emailService.sendMailInteresovanjeCreated(i);
+		
 	}
 
 
