@@ -1,9 +1,12 @@
 package com.vax.rest;
 
+import com.vax.rest.repository.GradjaninRepository;
 import com.vax.rest.repository.InteresovanjeRepository;
 import com.vax.rest.repository.ObrazacRepository;
 import com.vax.rest.repository.PotvrdaRepository;
 import com.vax.rest.repository.ZahtevRepository;
+import com.vax.rest.repository.ZdravstveniRadnikRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -13,6 +16,10 @@ import proj.xml.gradj.interesovanje.Interesovanje;
 import proj.xml.gradj.obrazac.*;
 import proj.xml.gradj.potvrda.Potvrda;
 import proj.xml.gradj.potvrda.TVakcinacija;
+import proj.xml.gradj.tipovi.Gradjanin;
+import proj.xml.gradj.tipovi.Pol;
+import proj.xml.gradj.tipovi.PunoIme;
+import proj.xml.gradj.tipovi.ZdravstveniRadnik;
 import proj.xml.gradj.zahtev.Zahtev;
 
 import javax.xml.datatype.DatatypeFactory;
@@ -25,6 +32,8 @@ public class DataLoader implements ApplicationRunner {
     private final PotvrdaRepository potvrdaRepository;
     private final ObrazacRepository obrazacRepository;
     private final InteresovanjeRepository interesovanjeRepository;
+    private final GradjaninRepository gradjaninRepository;
+    private final ZdravstveniRadnikRepository zdravstveniRadnikRepository;
 
     @Override
     @Transactional
@@ -181,5 +190,45 @@ public class DataLoader implements ApplicationRunner {
                         .withOpcijaDrzavljanin("Srpski")
                         .withProizvodjacVakcine("Biontech")
         );
+        
+        gradjaninRepository.store(
+        		new Gradjanin()
+        		.withImeIPrezime(new PunoIme()
+        				.withIme("Marko")
+        				.withPrezime("Markovic"))
+        		.withEmail("nadjaimatijaprojekat@gmail.com")
+        		.withEnabled(true)
+        		.withJMBG("1234567890123")
+        		.withLastPasswordReset(DatatypeFactory.newInstance().newXMLGregorianCalendar("2022-01-30T00:00:00.000Z"))
+        		.withLozinka("marko")
+        		.withOpcijaDrzavljanin("Drzavljanin Republike Srbije")
+        		.withPol(Pol.MUSKI));
+        
+        gradjaninRepository.store(
+        		new Gradjanin()
+        		.withImeIPrezime(new PunoIme()
+        				.withIme("Dusan")
+        				.withPrezime("Hajduk"))
+        		.withEmail("dusanbrk@gmail.com")
+        		.withEnabled(true)
+        		.withJMBG("3001987128391")
+        		.withLastPasswordReset(DatatypeFactory.newInstance().newXMLGregorianCalendar("2022-01-30T00:00:00.000Z"))
+        		.withLozinka("hajduk")
+        		.withOpcijaDrzavljanin("Drzavljanin Republike Srbije")
+        		.withPol(Pol.MUSKI));
+        
+        zdravstveniRadnikRepository.store(
+        		new ZdravstveniRadnik()
+        		.withImeIPrezime(new PunoIme()
+        				.withIme("Zdravko")
+        				.withPrezime("Zdravkovic"))
+        		.withEmail("nadjaimatijaprojekat@gmail.com")
+        		.withEnabled(true)
+        		.withJMBG("5234567890123")
+        		.withLastPasswordReset(DatatypeFactory.newInstance().newXMLGregorianCalendar("2022-01-30T00:00:00.000Z"))
+        		.withLozinka("zdravko")
+        		.withPunkt(new BigInteger("1"))
+        		.withZdravstvenaUstanova("Dom zdravlja Liman"));
+       
     }
 }

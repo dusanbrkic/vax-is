@@ -29,7 +29,7 @@ public class ObrazacController {
         return obrazacService.getObrazacByBrPasosa(brPasosa);
     }
 
-    @GetMapping(value = "/all")
+    @GetMapping()
     public ResponseEntity<List<Obrazac>> getAllObrasci() {
     	System.out.println("hrkfhskghdkgh");
         return new ResponseEntity<List<Obrazac>> (obrazacService.getAllObrasci(), HttpStatus.OK);
