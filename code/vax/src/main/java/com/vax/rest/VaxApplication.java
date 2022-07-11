@@ -16,6 +16,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
@@ -60,6 +62,11 @@ public class VaxApplication {
                 .getHandlerMethods().forEach((key, value) -> LOGGER.info("{} {}", key, value));
         }
     }
+    
+//    @Bean
+//    public HttpMessageConverter oxmHttpMessageConverter() {
+//    return new Jaxb2RootElementHttpMessageConverter();
+//    }
 
 
 }

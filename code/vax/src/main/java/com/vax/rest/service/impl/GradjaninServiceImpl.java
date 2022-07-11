@@ -26,4 +26,25 @@ public class GradjaninServiceImpl implements GradjaninService {
 	public List<Gradjanin> getAll(){
 		return gradjaninRepository.getAll();
 	}
+
+	@Override
+	public boolean register(Gradjanin g) {
+		Gradjanin poJMBG = gradjaninRepository.retrieveByJmbg(g.getJMBG());
+		Gradjanin poEmail = gradjaninRepository.retrieveByEmail(g.getEmail());
+		if (poJMBG == null && poEmail==null) {
+			gradjaninRepository.store(g);
+			return true;
+		}
+		return false;
+		
+	}
+
+	@Override
+	public Gradjanin login(String email, String password) {
+		Gradjanin gradjanin = gradjaninRepository.retrieveByEmail(email);
+		if (gradjanin.getLozinka().contentEquals(password)) {
+			return gradjanin;
+		}
+		return null;
+	}
 }
